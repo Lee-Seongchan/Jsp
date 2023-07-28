@@ -5,6 +5,5 @@
 <%
 	//1. DB연동 처리
 	BoardVO vo = new BoardVO();
-	vo.setSer
-
+	
 %>
