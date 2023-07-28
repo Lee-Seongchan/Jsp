@@ -48,8 +48,12 @@
 		<a href="/Ch06/1_JDBC.jsp">처음으로</a>
 		<a href="/Ch06/user4/list.jsp">User4 목록</a>
 		
-		<form action="/Ch04/user4/modifyProc.jsp" method="post">
+		<form action="/Ch06/user5/modifyProc.jsp" method="post">
 			<table border="1">
+				<tr>
+					<td><input type="hidden" name="seq" value="<%=vo.getSeq() %>"></td>
+				</tr>
+				
 				<tr>
 					<td>이름</td>
 					<td><input type="text" name="name" value="<%=vo.getName() %>"></td>

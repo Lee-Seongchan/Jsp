@@ -1,37 +1,41 @@
-
-<%@page import="java.sql.ResultSet"%>
-<%@page import="com.mysql.cj.protocol.Resultset"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="vo.User4VO"%>
 <%@page import="java.util.List"%>
+<%@page import="vo.Member"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<%
 	//데이터베이스 처리
 	String host = "jdbc:mysql://127.0.0.1:3306/userdb";
 	String user = "root";
 	String pass = "1234";
 	
-	List<User4VO> users = new ArrayList<>();
+	List<Member> users = new ArrayList<>();
 	
 	try{
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(host, user, pass);
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * FROM `user4`");
+		ResultSet rs = stmt.executeQuery("SELECT * FROM `member`");
 		
 		while(rs.next()){
-			User4VO vo = new User4VO();
-			vo.setSeq(rs.getInt(1));
+			Member vo = new Member();
+			vo.setUid(rs.getString(1));
 			vo.setName(rs.getString(2));
-			vo.setGender(rs.getInt(3));
-			vo.setAge(rs.getInt(4));
-			vo.setAddr(rs.getString(5));
-			
-			users.add(vo);
+			vo.setHp(rs.getString(3));
+			vo.setPos(rs.getString(4));
+			vo.setDep(rs.getInt(5));
 		}
 		rs.close();
 		stmt.close();
@@ -62,15 +66,16 @@
 				<td>주소</td>
 				<td>관리</td>
 			</tr>
-			<%for(User4VO vo : users){ %>
+			<%for(Member vo : users){ %>
 			<tr>
+				<td><%=vo.getUid() %></td>
 				<td><%=vo.getName() %></td>
-				<td><%=vo.getGender() == 1 ? "남":"여" %></td>
-				<td><%=vo.getAge() %></td>
-				<td><%=vo.getAddr() %></td>
+				<td><%=vo.getHp() %></td>
+				<td><%=vo.getPos() %></td>
+				<td><%=vo.getDep() %></td>
 				<td>
-					<a href="/Ch06/user4/modify.jsp?seq=<%=vo.getSeq()%>">수정</a>
-					<a href="/Ch06/user4/delete.jsp?seq=<%=vo.getSeq()%>">삭제</a>
+					<a href="/Ch06/user4/modify.jsp?seq=<%=vo.getUid()%>">수정</a>
+					<a href="/Ch06/user4/delete.jsp?seq=<%=vo.getUid()%>">삭제</a>
 				</td>
 			</tr>
 			<%} %>

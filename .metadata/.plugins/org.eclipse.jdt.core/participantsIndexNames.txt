@@ -3,6 +3,8 @@ C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\
 \Ch05\src\main\java
 C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3138225953.index
 \Ch02\src\main\java
+C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2437260793.index
+\Ch06\src\main\java
 C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\642213118.index
 \Ch04\src\main\java
 C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2370542751.index
@@ -33,6 +35,8 @@ C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\
 \Ch02\src\main\java
 C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1861661761.index
 \Textbook\src\main\java
+C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\620484615.index
+\Ch06\src\main\java
 C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2334172256.index
 \Textbook\src\main\java
 C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2969737664.index
