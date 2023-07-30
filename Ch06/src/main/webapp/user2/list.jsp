@@ -50,7 +50,7 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<h3>User1 목록</h3>
+		<h3>User2 목록</h3>
 		<a href="/Ch06/1_JDBC.jsp">처음으로</a>
 		<a href="/Ch06/user2/register.jsp">User2 등록</a>
 		

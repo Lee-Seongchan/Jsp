@@ -28,7 +28,7 @@
 					<td>직급</td>
 					<td>
 						<select name = "pos">
-							<option value = "1">사장</option>
+							<option value = "사장">사장</option>
 							<option value = "부장">부장</option>
 							<option value = "과장">과장</option>
 							<option value = "차장">차장</option>
