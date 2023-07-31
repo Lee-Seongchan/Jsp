@@ -56,7 +56,7 @@
 	</head>
 	<body>
 		<a href="/Ch06/1_JDBC.jsp">처음으로</a>
-		<a href="/Ch06/user4/register.jsp">User4 등록</a>
+		<a href="/Ch06/member/register.jsp">Member 등록</a>
 		
 		<table border="1">
 			<tr>
@@ -74,8 +74,8 @@
 				<td><%=vo.getPos() %></td>
 				<td><%=vo.getDep() %></td>
 				<td>
-					<a href="/Ch06/user4/modify.jsp?seq=<%=vo.getUid()%>">수정</a>
-					<a href="/Ch06/user4/delete.jsp?seq=<%=vo.getUid()%>">삭제</a>
+					<a href="/Ch06/member/modify.jsp?seq=<%=vo.getUid()%>">수정</a>
+					<a href="/Ch06/member/delete.jsp?seq=<%=vo.getUid()%>">삭제</a>
 				</td>
 			</tr>
 			<%} %>

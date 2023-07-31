@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.4+C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 572621565.index
 1696993505.index
@@ -12,3 +13,18 @@ INDEX VERSION 1.4+C:\Users\Java\Desktop\workspace\Jsp\.metadata\.plugins\org.ecl
 173439706.index
 2698183741.index
 2050788949.index
+=======
+INDEX VERSION 1.4+C:\Users\PC\OneDrive\¹ÙÅÁ È­¸é\workspace\Jsp\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3830979574.index
+2064616764.index
+2486366073.index
+117357889.index
+1763776889.index
+2102479436.index
+3811958767.index
+477479827.index
+173439706.index
+2050788949.index
+2442895318.index
+397267160.index
+>>>>>>> d8eac183644b35c65893ad8536a792c29a1369ea
