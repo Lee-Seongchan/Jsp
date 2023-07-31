@@ -12,6 +12,10 @@
 	String hp = request.getParameter("hp");
 	String age = request.getParameter("age");
 	
+	System.out.println(uid);
+	System.out.println(name);
+	System.out.println(age);
+	
 	//데이터베이스 처리
 	String host = "jdbc:mysql://127.0.0.1:3306/userdb";
 	String user = "root";

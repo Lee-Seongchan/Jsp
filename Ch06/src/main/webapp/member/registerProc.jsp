@@ -11,6 +11,7 @@
 	String pos = request.getParameter("pos");
 	String dep = request.getParameter("dep");
 	
+	
 	// 데이터베이스 처리
 	String host = "jdbc:mysql://127.0.0.1:3306/userdb";
 	String user = "root";
