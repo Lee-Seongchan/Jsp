@@ -3,7 +3,6 @@
 <%@page import="javax.sql.DataSource"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="com.mysql.cj.xdevapi.PreparableStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="vo.User2VO"%>

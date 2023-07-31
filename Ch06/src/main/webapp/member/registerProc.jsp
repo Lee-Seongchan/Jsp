@@ -10,15 +10,13 @@
 	String hp = request.getParameter("hp");
 	String pos = request.getParameter("pos");
 	String dep = request.getParameter("dep");
-	
-<<<<<<< HEAD
-=======
+
 	System.out.println(uid);
 	System.out.println(name);
 	System.out.println(hp);
 	System.out.println(pos);
 	System.out.println(dep);
->>>>>>> d8eac183644b35c65893ad8536a792c29a1369ea
+
 	
 	// 데이터베이스 처리
 	String host = "jdbc:mysql://127.0.0.1:3306/userdb";

@@ -4,7 +4,6 @@
 <%@page import="java.util.List"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
-
 <%@page import="java.sql.Connection"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
@@ -40,7 +39,7 @@
 		e.printStackTrace();
 	}
 	
-	//JSON 출력 
+	//JSON 출력	
 	Gson gson = new Gson();
 	String jsonData = gson.toJson(users);
 

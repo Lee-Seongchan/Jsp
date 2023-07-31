@@ -1,14 +1,12 @@
 <%@page import="org.jdom2.output.Format"%>
 <%@page import="org.jdom2.output.XMLOutputter"%>
-<%@page import="org.jdom2.Document"%>
 <%@page import="org.jdom2.Element"%>
-<%@page import="com.google.gson.Gson"%>
+<%@page import="org.jdom2.Document"%>
 <%@page import="vo.User2VO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
-
 <%@page import="java.sql.Connection"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
@@ -44,6 +42,7 @@
 		e.printStackTrace();
 	}
 	
+	
 	//XML 출력 
 	Document doc = new Document();
 	Element elUsers = new Element("users");
@@ -76,4 +75,5 @@
 	
 	
 	out.print(xml);
+	
 %>
