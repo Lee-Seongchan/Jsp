@@ -52,7 +52,7 @@
 		 				
 		 				for(let user of data){
 		 					console.log(user);
-		 					const tr = document.createElement("tr");
+		 					const tr  = document.createElement("tr");
 		 					const td1 = document.createElement("td");
 		 					const td2 = document.createElement("td");
 		 					const td3 = document.createElement("td");
