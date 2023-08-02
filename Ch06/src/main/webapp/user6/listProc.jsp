@@ -12,9 +12,7 @@
 <%@ page contentType="application/json;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	//데이터베이스 처리
-	String host = "jdbc:mysql://127.0.0.1:3306/userdb";
-	String user = "root";
-	String pass = "1234";
+
 	
 	List<User2VO> users = new ArrayList<>();
 	
