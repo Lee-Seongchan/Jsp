@@ -14,13 +14,14 @@
 	String uid = request.getParameter("uid");
 	String pass = request.getParameter("pass");
 	
-	UserVO vo = new UserVO();
-	vo.setUid(uid);
-	vo.setPass(pass);
+	//UserVO vo = new UserVO();
+	//vo.setUid(uid);
+	//vo.setPass(pass);
 	
 	// 사용자 DB조회
-	UserVO user = UserDAO.getInstance().selectUser(vo);
-		
+	//UserVO user = UserDAO.getInstance().selectUser(vo);
+	UserVO user = UserDAO.getInstance().selectUser(uid, pass);
+	
 	// 회원 여부 확인
 	if(user != null){
 		// 세션 처리

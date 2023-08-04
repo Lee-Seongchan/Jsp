@@ -53,7 +53,7 @@ public class UserDAO extends DBHelper{
 		
 	};
 	
-	public UserVO selectUser(UserVO vo) {
+	public UserVO selectUser(String uid, String pass) {
 
 		UserVO user = null;
 		
@@ -62,8 +62,8 @@ public class UserDAO extends DBHelper{
 			conn = getConnection();
 			
 			psmt = conn.prepareStatement(SQL.SELECT_USER);
-			psmt.setString(1, vo.getUid());
-			psmt.setString(2, vo.getPass());
+			psmt.setString(1, uid);
+			psmt.setString(2, pass);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()){
