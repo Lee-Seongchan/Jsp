@@ -22,6 +22,9 @@
 	//UserVO user = UserDAO.getInstance().selectUser(vo);
 	UserVO user = UserDAO.getInstance().selectUser(uid, pass);
 	
+ 	//UserDAO user = UserDAO.getInstance();
+	//UserVO userVO = user.selectUser(uid, pass); //selectUser의 반환타입은 UserVO
+	
 	// 회원 여부 확인
 	if(user != null){
 		// 세션 처리
