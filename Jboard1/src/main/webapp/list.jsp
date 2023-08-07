@@ -1,31 +1,14 @@
+<%@page import="kr.co.jboard1.vo.ArticleVO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.jboard1.vo.ArticleDAO"%>
 <%@page import="kr.co.jboard1.vo.UserVO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./_header.jsp" %> <!-- include는 상대경로로 작성한다. --> 
 <%
-	// 현재 로그인 사용자 정보 가져오기
-	UserVO sessUser = (UserVO)session.getAttribute("sessUser");
-	
-	if(sessUser == null){
-		response.sendRedirect("/Jboard1/user/login.jsp?success=101"); //101실패 임의의 파라미터 
-		return;
-	}
+	ArticleDAO dao = new ArticleDAO();
+	List<ArticleVO> articles = dao.selectArticles();
+
 %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글목록</title>
-    <link rel="stylesheet" href="./css/style.css">    
-</head>
-<body>
-    <div id="container">
-        <header>
-            <h3>Board System v1.0</h3>
-            <p>
-                <%=sessUser.getNick() %>님 반갑습니다.
-                <a href="/Jboard1/user/logout.jsp" class="logout">[로그아웃]</a>
-            </p>
-        </header>
         <main>
             <section class="list">
                 <h3>글목록</h3>
@@ -38,13 +21,15 @@
                             <th>날짜</th>
                             <th>조회</th>
                         </tr>
+                        <%for(ArticleVO article : articles) { %>
                         <tr>
                             <td>1</td>
-                            <td><a href="#">테스트 제목입니다.</a>&nbsp;[3]</td>
-                            <td>길동이</td>
-                            <td>20-05-12</td>
-                            <td>12</td>
+                            <td><a href="#"><%=article.getTitle() %></a>&nbsp;[3]</td>
+                            <td><%=article.getWriter() %></td>
+                            <td><%=article.getRdate() %></td>
+                            <td><%=article.getHit() %></td>
                         </tr>
+                        <%} %>
                     </table>
                 </article>
 
@@ -58,12 +43,7 @@
                 </div>
 
                 <!-- 글쓰기 버튼 -->
-                <a href="#" class="btnWrite">글쓰기</a>
+                <a href="/Jboard1/write.jsp" class="btnWrite">글쓰기</a>
             </section>
         </main>
-        <footer>
-            <p>ⓒcopyright 이성찬.com</p>
-        </footer>
-    </div>
-</body>
-</html>
+<%@ include file="./_footer.jsp"%>        
