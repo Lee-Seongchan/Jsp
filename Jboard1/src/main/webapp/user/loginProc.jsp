@@ -1,5 +1,5 @@
-<%@page import="kr.co.jboard1.vo.UserDAO"%>
-<%@page import="kr.co.jboard1.vo.UserVO"%>
+<%@page import="kr.co.jboard1.dao.UserDAO"%>
+<%@page import="kr.co.jboard1.vo.UserDTO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -20,7 +20,7 @@
 	
 	// 사용자 DB조회
 	//UserVO user = UserDAO.getInstance().selectUser(vo);
-	UserVO user = UserDAO.getInstance().selectUser(uid, pass);
+	UserDTO user = UserDAO.getInstance().selectUser(uid, pass);
 	
  	//UserDAO user = UserDAO.getInstance();
 	//UserVO userVO = user.selectUser(uid, pass); //selectUser의 반환타입은 UserVO

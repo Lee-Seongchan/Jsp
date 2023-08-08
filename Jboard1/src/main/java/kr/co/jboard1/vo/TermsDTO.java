@@ -1,6 +1,6 @@
 package kr.co.jboard1.vo;
 
-public class TermsVO {
+public class TermsDTO {
 	private String terms;
 	private String privacy;
 	

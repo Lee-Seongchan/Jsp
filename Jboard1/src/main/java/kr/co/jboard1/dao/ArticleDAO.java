@@ -1,4 +1,4 @@
-package kr.co.jboard1.vo;
+package kr.co.jboard1.dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -6,11 +6,12 @@ import java.util.List;
 
 import kr.co.jboard1.db.DBHelper;
 import kr.co.jboard1.db.SQL;
+import kr.co.jboard1.vo.ArticleDTO;
 
 public class ArticleDAO extends DBHelper{
 	
 	// 기본 CRUD메서드
-	public void insetArticle(ArticleVO vo) {
+	public void insetArticle(ArticleDTO vo) {
 		try{
 			conn = getConnection();
 				
@@ -31,22 +32,23 @@ public class ArticleDAO extends DBHelper{
 		
 	}
 	
-	public ArticleVO selectArticle(int no) {
+	public ArticleDTO selectArticle(int no) {
 		
 		return null;
 	}
 	
-	public List<ArticleVO> selectArticles() {
+	public List<ArticleDTO> selectArticles(int start) {
 		
-		List<ArticleVO> articles = new ArrayList<>();
+		List<ArticleDTO> articles = new ArrayList<>();
 		
 		try{
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_ARTICLES);
+			psmt.setInt(1, start);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				ArticleVO vo = new ArticleVO();
+				ArticleDTO vo = new ArticleDTO();
 				vo.setNo(rs.getInt(1));
 				vo.setParent(rs.getInt(2));
 				vo.setComment(rs.getInt(3));
@@ -58,6 +60,7 @@ public class ArticleDAO extends DBHelper{
 				vo.setWriter(rs.getString(9));
 				vo.setRegip(rs.getString(10));
 				vo.setRdate(rs.getString(11));
+				vo.setNick(rs.getString(12)); //nick
 				
 				articles.add(vo);
 			}
@@ -70,11 +73,35 @@ public class ArticleDAO extends DBHelper{
 		return articles;
 	}
 	
-	public void updateArticle(ArticleVO vo) {
+	public void updateArticle(ArticleDTO vo) {
 		
 	}
 	
 	public void deleteArticle(int no) {
 		
 	}
+	
+	// 추가 
+	
+	
+	public int selectCountTotal() {
+		int total = 0;
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_COUNTTOTAL);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			close();
+			
+		} catch (Exception e) {
+
+		}
+		
+		return total;
+	}
+	
+	
 }

@@ -22,7 +22,7 @@
 	  					url:"/Jboard1/user/checkUid.jsp",
 	  					type:"GET",
 	  					data: jsonData,
-	  					datatype:"json",
+	  					datatype:"json", //{"uid" : uid}
 	  					success: function(data) {
 	  						
 	  						if(data.result >= 1){

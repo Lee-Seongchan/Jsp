@@ -1,4 +1,4 @@
-<%@page import="kr.co.jboard1.vo.UserDAO"%>
+<%@page import="kr.co.jboard1.dao.UserDAO"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>

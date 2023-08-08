@@ -33,7 +33,17 @@ public class SQL {
 												+ "`regip`= ?, "
 												+ "`rdate`= NOW() ";
 	
-	public final static String SELECT_ARTICLES = "SELECT * FROM `Article`";
+	public final static String SELECT_ARTICLES = "SELECT "
+												+ "a.*, "
+												+ "b.`nick` "
+												+ "FROM `Article` AS a "
+												+ "JOIN `User` AS b ON a.writer = b.uid "
+												+ "ORDER BY `no` DESC "
+												+ "LIMIT ?, 10"; //시작위치(0부터 시작), 반환갯수
+	
+	
+
+	public final static String SELECT_COUNTTOTAL = "SELECT Count(*) FROM `Article`";
 	
 	
 }

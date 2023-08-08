@@ -1,4 +1,3 @@
-<%@page import="kr.co.jboard1.vo.UserVO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %> <!-- include는 상대경로로 작성한다. --> 
         <main>

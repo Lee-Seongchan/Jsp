@@ -1,5 +1,5 @@
+<%@page import="kr.co.jboard1.vo.TermsDTO"%>
 <%@page import="javax.sql.DataSource"%>
-<%@page import="kr.co.jboard1.vo.TermsVO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 
-	TermsVO vo = new TermsVO();
+	TermsDTO vo = new TermsDTO();
 	
 	try{
 		Context initCtx = new InitialContext();
@@ -97,7 +97,7 @@
                     </tr>
                 </table>
                 <div>
-                    <a href="#" class="btnCancel">취소</a>
+                    <a href="/Jboard1/user/login.jsp" class="btnCancel">취소</a>
                     <a href="#" class="btnNext">다음</a>
                 </div>
             </section>
