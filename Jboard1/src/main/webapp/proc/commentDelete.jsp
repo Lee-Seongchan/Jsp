@@ -7,8 +7,12 @@
 	String parent = request.getParameter("parent");
 	
 	ArticleDAO dao = new ArticleDAO();
+	
+	//댓글 삭제
 	dao.deleteComment(no);
 	
+	// 댓글 카운트 수정 Minus
+	dao.updateAticleForCommentMinus(parent);
 	
 	response.sendRedirect("/Jboard1/view.jsp?no="+parent);
 

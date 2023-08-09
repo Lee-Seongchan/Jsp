@@ -66,6 +66,9 @@ public class SQL {
 	public final static String SELECT_COUNTTOTAL = "SELECT Count(*) FROM `Article` WHERE `parent`=0";
 	
 	public final static String UPDATE_ARTICLE_FOR_COMMENT = "UPDATE `Article` SET `comment` = `comment` + 1 WHERE `NO` = ?;";
+	public final static String UPDATE_ARTICLE_FOR_COMMENT_MINUS = "UPDATE `Article` SET `comment` = `comment` - 1 WHERE `NO` = ?;";
+	
+	
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=? ";
 	
 }

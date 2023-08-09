@@ -194,6 +194,25 @@ public class ArticleDAO extends DBHelper{
 		}
 	}
 	
+	public void updateAticleForCommentMinus(String parent) {
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE_FOR_COMMENT_MINUS);
+			psmt.setString(1, parent);
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+	
+	
 	public void updateArticleForComment(String no) {
 		
 		
