@@ -1,5 +1,6 @@
 <%@page import="kr.co.jboard1.vo.UserDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <%
 	UserDTO sessUser = (UserDTO)session.getAttribute("sessUser");
 	if(sessUser == null){

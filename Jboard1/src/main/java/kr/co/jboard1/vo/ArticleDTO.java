@@ -38,6 +38,11 @@ public class ArticleDTO {
 	public void setParent(int parent) {
 		this.parent = parent;
 	}
+	//----------------추가--------------
+	public void setParent(String parent) {
+		this.parent = Integer.parseInt(parent);
+	}
+	//------------------------
 	public int getComment() {
 		return comment;
 	}
