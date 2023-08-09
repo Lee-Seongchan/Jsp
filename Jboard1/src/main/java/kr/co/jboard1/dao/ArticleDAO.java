@@ -35,8 +35,7 @@ public class ArticleDAO extends DBHelper{
 
 	public ArticleDTO selectArticle(String no) {
 		
-		ArticleDTO dto = new ArticleDTO();
-		
+		ArticleDTO dto = null;
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_ARTICLE);
