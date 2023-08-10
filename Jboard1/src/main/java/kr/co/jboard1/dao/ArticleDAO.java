@@ -107,10 +107,39 @@ public class ArticleDAO extends DBHelper{
 	}
 	
 	public void updateArticle(ArticleDTO vo) {
-		
+		try{
+
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE);
+		 	psmt.setString(1, vo.getTitle());	
+		 	psmt.setString(2, vo.getContent());	
+		 	psmt.setInt(3, vo.getNo());	
+			
+		 	psmt.executeUpdate();
+			
+		 	close();
+		 	
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
-	public void deleteArticle(int no) {
+	public void deleteArticle(String no) {
+		
+		
+		try{
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_ARTICLE);
+			psmt.setString(1, no);
+			psmt.setString(2, no);
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e ){
+			e.printStackTrace();
+		}
 		
 	}
 	

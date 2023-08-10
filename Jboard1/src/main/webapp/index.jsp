@@ -1,9 +1,10 @@
-<%@page import="kr.co.jboard1.vo.UserVO"%>
+
+<%@page import="kr.co.jboard1.vo.UserDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	//
-	UserVO sessUser = (UserVO)session.getAttribute("sessUser");
-	
+	//현재 로그인 여부를 확인
+	UserDTO sessUser = (UserDTO) session.getAttribute("sessUser");
+
 	if(sessUser == null){
 		pageContext.forward("./user/login.jsp");
 		

@@ -32,6 +32,12 @@ public class ArticleDTO {
 	public void setNo(int no) {
 		this.no = no;
 	}
+	
+	//------추가(문자열을 숫자열로 오버로드)----
+	public void setNo(String no) {
+		this.no = Integer.parseInt(no);
+	}
+	//------------------------------
 	public int getParent() {
 		return parent;
 	}
