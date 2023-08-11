@@ -26,12 +26,33 @@
 
 	// 댓글삭제
 	$(function(){
+		
+		/* 
+		//댓글 내용 전역변수
+		let comment = "";
+		
+		
+		잘못됫음
+		// 댓글 수정 취소
+		$(".can").click(function(e){
+			e.preventDefault();
+			
+			//수정모드 해제
+			$(this).parent().prev().removeClass("modi");
+			$(this).parent().prev().attr("readonly",true);	
+			$(this).hide();
+			$(this).next().text();
+			
+		})	
+	*/
+		
 		//댓글 수정
 		$(".mod").click(function(e){
 			e.preventDefault();
 			
 			const txt = $(this).text();
 			if(txt == "수정"){
+				// 수정모드 전환
 				$(this).parent().prev().addClass("modi");
 				$(this).parent().prev().attr("readonly",false);	//attr()은 요소(element)의 속성(attribute)의 값을 가져오거나 속성을 추가한다
 				$(this).parent().prev().focus();
@@ -39,10 +60,12 @@
 				$(this).prev().show();
 			}else{
 				// 수정 완료 클릭
+				if(confirm("정말 수정하시겠습니까?")){
+					// 수정 데이터 전송
+					$(this).closest("form").submit();
+				}
 				
-				// 수정 데이터 전송
-				$(this).closest("form").submit();
-				
+
 				// 수정모드 해체
 				$(this).parent().prev().removeClass("modi");
 				$(this).parent().prev().attr("readonly",true);	
@@ -53,44 +76,47 @@
 		});
 		
 		
-		$(".del").click(function(){
-			const result = confirm("정말 삭제 하시겠습니까?")
-			if(result){
-				return true;
-			}else{
-				return false;
+			$(".del").click(function(){
+				const result = confirm("정말 삭제 하시겠습니까?")
+				if(result){
+					return true;
+				}else{
+					return false;
+				}
+			}); //del
+			
+			//댓글쓰기 취소 
+			/* 	const commentContent = document.querySelector("form > textarea[name = content]")
+				const btnCancel = document.querySelector(".btnCancel");
+				btnCancel.onclick = function(e){
+					e.preventDefault();
+					
+					commentContent.value = '';
+				
+				
+			} */
+			// 제이쿼리 방식
+			$(".btnCancel").click(function(e){
+				e.preventDefault();
+				
+				$("form > textarea[name = content]").val('');
+				
+			}) 
+			
+			
+			
+	
+			// 원글 삭제
+		const btnDelete = document.getElementsByClassName("btnDelete")[0];
+			btnDelete.onclick = function(){
+				if(confirm("정말 삭제하시겠습니까?")){
+					return true;
+				}else{
+					return false;
+				}
+				
 			}
-		}); //del
-		
-	//댓글쓰기 취소 
-	/* 	const commentContent = document.querySelector("form > textarea[name = content]")
-		const btnCancel = document.querySelector(".btnCancel");
-		btnCancel.onclick = function(e){
-			e.preventDefault();
 			
-			commentContent.value = '';
-			
-			
-		} */
-	// 제이쿼리 방식
-		$(".btnCancel").click(function(e){
-			e.preventDefault();
-			
-			$("form > textarea[name = content]").val('');
-			
-		}) 
-
-		// 원글 삭제
-	const btnDelete =document.getElementsByClassName("btnDelete")[0];
-		btnDelete.onclick = function(){
-			if(confirm("정말 삭제하시겠습니까?")){
-				return true;
-			}else{
-				return false;
-			}
-			
-		}
-		
 	});
 	
 
@@ -135,6 +161,8 @@
                     <%for(ArticleDTO comment: comments){ %>
                     <article class="comment">
 	                    <form action="/Jboard1/proc/commentUpdate.jsp" method="post">
+	                    	<input type="hidden" name="no" value="<%=comment.getNo() %>"> <!-- no값 추가  -->
+	                    	<input type="hidden" name="parent" value="<%=comment.getParent() %>"> <!-- parent값 추가  -->
 	                        <span>
 	                            <span><%=comment.getNick() %></span>
 	                            <span><%=comment.getRdate() %></span>
@@ -143,7 +171,7 @@
 	                        <div>
 	                        <%if(sessUser.getUid().equals(comment.getWriter())){ %>
 	                            <a href="/Jboard1/proc/commentDelete.jsp?no=<%=comment.getNo() %>&parent=<%=no %>" class="del">삭제</a> 
-	                            <a href="#" class="can">취소</a>
+	                            <a href="/Jboard1/view.jsp?no=<%=no %>" class="can">취소</a>
 	                            <a href="#" class="mod">수정</a>
 	                        </div>
 	                        <%} %>

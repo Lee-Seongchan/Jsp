@@ -55,6 +55,8 @@ public class ArticleDTO {
 	public void setComment(int comment) {
 		this.comment = comment;
 	}
+	
+	
 	public String getCate() {
 		return cate;
 	}

@@ -22,9 +22,10 @@
 	
 	ArticleDAO dao = new ArticleDAO();
 	dao.updateArticle(dto);
-	
-	
 
+	
+	
+	
 	response.sendRedirect("/Jboard1/view.jsp?no="+no);
 	
 	
