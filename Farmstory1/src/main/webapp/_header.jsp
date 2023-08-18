@@ -1,8 +1,12 @@
 <%@page import="kr.farmstory1.dto.UserDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <% 
+	request.setCharacterEncoding("UTF-8");
+	String success = request.getParameter("success");
 	//로그인 화면 구분을 위해 세션 받아오기
 	UserDTO sessUser = (UserDTO)session.getAttribute("sessUser");
+
+
 
 %>
 <!DOCTYPE html>
@@ -18,6 +22,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>    
     <script>
+    
+    	const success = <%= success %>;
+    	
+    	if(success == 100){
+    		alert("로그인에 실패 했습니다. 아이디, 비번을 다시 확인하시기 바랍니다.");
+    	}else if(success == 101){
+    		alert("로그인을 먼저 하셔야 합니다.")
+    	}
+    
+    
+    
         $(function(){
             $('.slider > ul').bxSlider({
                 slideWidth: 980,
@@ -55,8 +70,8 @@
             <ul class="gnb">
                 <li><a href="/Farmstory1/introduction/hello.jsp">팜스토리소개</a></li>
                 <li><a href="/Farmstory1/market/list.jsp"><img src="/Farmstory1/images/head_menu_badge.png" alt="30%"/>장보기</a></li>
-                <li><a href="/Farmstory1/croptalk/story.jsp">농작물이야기</a></li>
-                <li><a href="/Farmstory1/event/event.jsp">이벤트</a></li>
-                <li><a href="/Farmstory1/community/notice.jsp">커뮤니티</a></li>
+                <li><a href="/Farmstory1/board/list.jsp?group=Croptalk&cate=story">농작물이야기</a></li>
+                <li><a href="/Farmstory1/board/list.jsp?group=Event&cate=event">이벤트</a></li>
+                <li><a href="/Farmstory1/board/list.jsp?group=Community&cate=notice">커뮤니티</a></li>
             </ul>
         </header>
