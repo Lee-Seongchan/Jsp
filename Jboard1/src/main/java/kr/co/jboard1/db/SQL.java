@@ -18,7 +18,7 @@ public class SQL {
 	
 
 										    
-	public static final String SELECT_USER = "SELECT * FROM `user` WHERE `uid`=? AND `pass`=SHA2(?, 256)";					    
+	public static final String SELECT_USER = "SELECT * FROM `User` WHERE `uid`=? AND `pass`=SHA2(?, 256)";					    
 	public static final String SELECT_COUNT_UID = "SELECT COUNT(*) FROM `User` WHERE `uid`=? ";					    
 	public static final String SELECT_COUNT_NICK = "SELECT COUNT(*) FROM `User` WHERE `nick`=? ";					    
 	public static final String SELECT_COUNT_COUNT_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `email`=? ";					    
@@ -67,7 +67,7 @@ public class SQL {
 	
 	
 	public final static String UPDATE_ARTICLE = "UPDATE `Article` SET `title`=?, `content` = ? WHERE `no` = ?";
-	public final static String UPDATE_ARTICLE_FOR_COMMENT = "UPDATE `Article` SET `comment` = `comment` + 1 WHERE `NO` = ?;";
+	public final static String UPDATE_ARTICLE_FOR_COMMENT_PLUS = "UPDATE `Article` SET `comment` = `comment` + 1 WHERE `NO` = ?;";
 	public final static String UPDATE_ARTICLE_FOR_COMMENT_MINUS = "UPDATE `Article` SET `comment` = `comment` - 1 WHERE `NO` = ?;";
 	
 	public final static String UPDATE_COMMENT = "UPDATE `Article` SET `content`=? WHERE `no`=? ";

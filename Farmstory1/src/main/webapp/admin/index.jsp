@@ -1,35 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>팜스토리</title>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <div id="container">
-        <header>
-            <a href="./index.html" class="logo"><img src="./images/admin_logo.jpg" alt="로고"/></a>
-            <p>
-                <a href="/">HOME |</a>
-                <a href="#">로그아웃 |</a>
-                <a href="#">고객센터</a>
-            </p>
-        </header>
+<%@ include file = "./_header.jsp" %>
         <main>
-            <aside>
-                <h3>주요기능</h3>
-                <ul>
-                    <li><a href="./productList.html">상품관리</a></li>
-                    <li><a href="./orderList.html">주문관리</a></li>
-                    <li><a href="./userList.html">회원관리</a></li>                    
-                </ul>
-            </aside>
+        <%@ include file="./_aside.jsp" %>
             <section>
                 <nav>
                     <h3>관리자 메인</h3>
@@ -170,4 +142,4 @@
                 </article>
             </section>
         </main>
-<%@ include file="../_footer.jsp" %> 
+<%@ include file="./_footer.jsp" %> 

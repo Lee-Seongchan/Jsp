@@ -27,6 +27,3 @@
             </p>
         </header>
        
-    </div>
-</body>
-</html>

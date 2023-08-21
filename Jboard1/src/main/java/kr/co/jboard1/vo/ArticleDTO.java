@@ -99,6 +99,7 @@ public class ArticleDTO {
 	public void setRegip(String regip) {
 		this.regip = regip;
 	}
+	// 날짜 출력
 	public String getRdate() {
 		return rdate.substring(2,10);
 	}

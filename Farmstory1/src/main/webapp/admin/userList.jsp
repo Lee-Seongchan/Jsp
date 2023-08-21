@@ -1,50 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>팜스토리</title>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <script>
-        $(function(){
-
-            $('.showPopup').click(function(e){
-                e.preventDefault();
-                $('#userPopup').show();
-            });
-
-            $('#userPopup .btnClose').click(function(){
-                $('#userPopup').hide();
-            });
-
-        });
-    </script>
-</head>
-
-<body>
-    <div id="container">
-        <header>
-            <a href="./index.html" class="logo"><img src="./images/admin_logo.jpg" alt="로고"/></a>
-            <p>
-                <a href="#">HOME |</a>
-                <a href="#">로그아웃 |</a>
-                <a href="#">고객센터</a>
-            </p>
-        </header>
+<%@ include file ="./_header.jsp" %>
         <main>
-            <aside>
-                <h3>주요기능</h3>
-                <ul>
-                    <li><a href="#">상품관리</a></li>
-                    <li><a href="#">주문관리</a></li>
-                    <li class="on"><a href="#">회원관리</a></li>                    
-                </ul>
-            </aside>
+           <%@ include file="./_aside.jsp" %>
             <section id="orderList">
                 <nav>
                     <h3>회원목록</h3>
@@ -139,12 +96,9 @@
                 </article>
             </section>
         </main>
-        <footer>            
-            <p>                
-                Copyright(C)Farmstory All rights reserved. FARMSTORY ADMINISTRATOR Version 1.0.1
-            </p>
-        </footer>
-
+        
+       <%@ include file ="./_footer.jsp" %>
+        
         <div id="userPopup">
             <section>
                 <nav>

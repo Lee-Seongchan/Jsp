@@ -60,7 +60,7 @@
                 <%}else {%>
                 <a href="/Farmstory1/user/logout.jsp">로그아웃 |</a>
 	                <%if(!sessUser.getRole().equals("USER")){ %>
-	                	<a href="/Farmstory1/admin.jsp">관리자 |</a>
+	                	<a href="/Farmstory1/admin/index.jsp">관리자 |</a>
 	                <%} %>
                 <%} %>
                 <a href="#">고객센터</a>

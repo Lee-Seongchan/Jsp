@@ -24,6 +24,6 @@
 	dao.insetComment(dto);
 	
 	// 댓글 카운트 수정
-	dao.updateArticleForComment(parent);
+	dao.updateArticleCommentPlus(parent);
 	response.sendRedirect("/Jboard1/view.jsp?no="+parent);
 %>
