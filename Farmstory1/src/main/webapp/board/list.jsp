@@ -57,7 +57,7 @@
 	// 현재 페이지 게시물 조회
 	List<ArticleDTO> articles = dao.selectArticles(cate, start);
 	
-	pageContext.include("./_aside"+group+".jsp");
+	pageContext.include("./_aside"+group+".jsp"); //동적 include => 지시자는 동적 인클루라라서 <%= 되지 않는다.
 %>
 
 
