@@ -1,6 +1,7 @@
 package kr.farmstory1.dto;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 public class ProductDTO {
@@ -10,6 +11,7 @@ public class ProductDTO {
 	private String pName;
 	private int price;
 	private int delivery;
+	private int sold;
 	private int stock;
 	private String thumb1;
 	private String thumb2;
@@ -20,6 +22,10 @@ public class ProductDTO {
 	private String path;
 	
 	
+	
+	public ProductDTO() {
+		this.path = path;
+	}
 	
 	public ProductDTO(String path) {
 		this.path = path;
@@ -53,6 +59,15 @@ public class ProductDTO {
 	public int getPrice() {
 		return price;
 	}
+
+	//추가 숫자에 , 표현
+	public String getPriceWithComa() {
+		
+		DecimalFormat df = new DecimalFormat("###,###");
+
+		return df.format(price);
+	}
+	
 	public void setPrice(int price) {
 		this.price = price;
 	}
@@ -91,6 +106,12 @@ public class ProductDTO {
 	}
 	
 	public void setThumb1(String thumb1) {
+		this.thumb1 = thumb1;
+	}
+	
+
+	
+	public void setThumb1ForRename(String thumb1) {
 		this.thumb1 = fileRename(thumb1);
 	}
 	
@@ -100,13 +121,22 @@ public class ProductDTO {
 	}
 	
 	public void setThumb2(String thumb2) {
+		this.thumb2 = thumb2;
+	}
+	
+	public void setThumb2ForRename(String thumb2) {
 		this.thumb2 = fileRename(thumb2);
 	}
 	
 	public String getThumb3() {
 		return thumb3;
 	}
+	
 	public void setThumb3(String thumb3) {
+		this.thumb3 = thumb3;
+	}
+	
+	public void setThumb3ForRename(String thumb3) {
 		this.thumb3 = fileRename(thumb3);
 	}
 	public String getSeller() {
@@ -129,6 +159,16 @@ public class ProductDTO {
 	}
 	
 	
+	
+	
+	public int getSold() {
+		return sold;
+	}
+
+	public void setSold(int sold) {
+		this.sold = sold;
+	}
+
 	public String fileRename(String thumb) {
 		int i = thumb.lastIndexOf(".");
 		String ext = thumb.substring(i);

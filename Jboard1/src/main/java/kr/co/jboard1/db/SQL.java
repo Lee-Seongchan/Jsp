@@ -63,7 +63,7 @@ public class SQL {
 
 							
 
-	public final static String SELECT_COUNTTOTAL = "SELECT Count(*) FROM `Article` WHERE `parent`=0";
+	public final static String SELECT_COUNT_TOTAL = "SELECT Count(*) FROM `Article` WHERE `parent`=0";
 	
 	
 	public final static String UPDATE_ARTICLE = "UPDATE `Article` SET `title`=?, `content` = ? WHERE `no` = ?";

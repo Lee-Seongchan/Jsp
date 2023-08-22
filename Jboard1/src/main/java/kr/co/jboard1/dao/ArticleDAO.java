@@ -151,7 +151,7 @@ public class ArticleDAO extends DBHelper{
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_COUNTTOTAL);
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				total = rs.getInt(1);
