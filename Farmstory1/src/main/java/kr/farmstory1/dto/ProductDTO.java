@@ -38,6 +38,12 @@ public class ProductDTO {
 	public void setpNo(int pNo) {
 		this.pNo = pNo;
 	}
+	
+	
+	public void setpNo(String pNo) {
+		this.pNo = Integer.parseInt(pNo);
+	}
+	
 	public int getType() {
 		return type;
 	}

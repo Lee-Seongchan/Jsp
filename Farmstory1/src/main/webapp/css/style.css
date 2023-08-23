@@ -468,7 +468,7 @@ main > .info > div > .account {
     font-weight: bold;            
 }
 
-#sub > .market > .list > .thumb {
+#sub > .market > .list .thumb {
 	width: 120px;
 	height: 120px;
 }
@@ -494,12 +494,14 @@ main > .info > div > .account {
 
 #sub > .market > .view > .basic {
     width: 100%;
-    height: 270px;
+    height: 300px;
     position: relative;
     overflow: hidden;
 }
 #sub > .market > .view > .basic > img {
     float: left;
+    width: 240px;
+    height: 240px;
 }
 #sub > .market > .view > .basic > table {
     float: right;
@@ -525,7 +527,7 @@ main > .info > div > .account {
 }
 
 
-#sub > .market > .view > .detail {}
+#sub > .market > .view > .detail {width: 760px;}
 #sub > .market > .view > .delivery {}
 #sub > .market > .view > .exchange table {
     width: 100%;
@@ -572,6 +574,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #sub > .market > .order > .info > img {
     float: left;
+    width: 240px;
+    height: 240px;
 }
 #sub > .market > .order > .info > table {
     float: right;

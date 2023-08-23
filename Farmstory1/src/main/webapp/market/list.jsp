@@ -65,6 +65,9 @@
    	
    	
    	List<ProductDTO> products = dao.selectProducts(type,start);
+   	
+   	
+   	
 %>
 
 
@@ -92,11 +95,12 @@
                         <a href="./list.jsp?type=1" class="<%=type.equals("1") ? "on" : ""%>">과일<%= type.equals("1")? "("+ total + ")" : "" %> |</a>
                         <a href="./list.jsp?type=2" class="<%=type.equals("2") ? "on" : ""%>">야채<%= type.equals("2")? "("+ total + ")" : "" %> |</a>
                         <a href="./list.jsp?type=3" class="<%=type.equals("3") ? "on" : ""%>">곡류<%= type.equals("3")? "("+ total + ")" : "" %> |</a>
+                    </p>
                     <table border="0">
                     <%for(ProductDTO product : products){ %>
                         <tr>
                             <td>
-                                <a href="./view.jsp"><img src="/Farmstory1/thumb/<%=product.getThumb1() %>" class="thumb" alt="사과 500g"></a>
+                                <a href="./view.jsp?pNo=<%= product.getpNo()%>"><img src="/Farmstory1/thumb/<%=product.getThumb1() %>" class="thumb" alt="사과 500g"></a>
                             </td>
                             <td>
                             	<%
