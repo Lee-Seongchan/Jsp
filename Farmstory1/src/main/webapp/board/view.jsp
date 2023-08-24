@@ -36,6 +36,37 @@
 				return false;
 			}
 		}); 
+		
+		
+		$(".mod").click(function(e){
+			e.preventDefault();
+			
+			const txt = $(this).text();
+			if(txt == "수정"){
+				// 수정모드 전환
+				$(this).parent().prev().addClass("modi");
+				$(this).parent().prev().attr("readonly",false);	//attr()은 요소(element)의 속성(attribute)의 값을 가져오거나 속성을 추가한다
+				$(this).parent().prev().focus();
+				$(this).text("수정완료");
+				$(this).prev().show();
+			}else{
+				// 수정 완료 클릭
+				if(confirm("정말 수정하시겠습니까?")){
+					// 수정 데이터 전송
+					$(this).closest("form").submit();
+				}
+				
+
+				// 수정모드 해체
+				$(this).parent().prev().removeClass("modi");
+				$(this).parent().prev().attr("readonly",true);	
+				$(this).text("수정");
+				$(this).prev().hide();
+				
+			}
+		});
+		
+		
 	
 	})//function end
 	
@@ -80,16 +111,18 @@
                     <h3>댓글목록</h3>
                     <% for(ArticleDTO comment : comments){ %>
                     <article class="comment">
-	                    <form action="#" method="post">
+	                    <form action="/Farmstory1/board/proc/commentUpdate.jsp?group=<%= group %>&cate=<%= cate %>" method="post">
 	                    	<input type="hidden" name="no" value="<%=comment.getNo() %>"> <!-- no값 추가  -->
 	                    	<input type="hidden" name="parent" value=<%=comment.getParent() %>> <!-- parent값 추가  -->
+	                    	<input type="hidden" name="cate" value=<%=cate %>> 
+	                    	<input type="hidden" name="group" value=<%=group %>> 
+	                    	
 	                        <span>
 	                            <span><%=comment.getNick() %></span>
 	                            <span><%=comment.getRdate() %></span>
 	                        </span>
-	                        <textarea name="comment" readonly><%=comment.getContent() %></textarea>
+	                        <textarea name="comment" readonly><%=comment.getContent() %></textarea> <!-- modi class추가 -->
 	                        <div>
-	                      
 	                            <a href="#" class="del">삭제</a> 
 	                            <a href="#" class="can">취소</a>
 	                            <a href="#" class="mod">수정</a>

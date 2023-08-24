@@ -22,18 +22,18 @@
 	String receiver = request.getParameter("receiver");
 	
 	
-	System.out.println("hp = " + hp);
-	System.out.println("zip = " + zip);
-	System.out.println("addr1 = " + addr1);
-	System.out.println("addr2 = " + addr2);
-	System.out.println("etc = " + etc);	
-	System.out.println("orderDelivery = " + orderDelivery);
-	System.out.println("orderCount = " + orderCount);
-	System.out.println("orderProduct = " + orderProduct);
-	System.out.println("orderPrice = " + orderPrice);
-	System.out.println("orderTotal = " + orderTotal);
-	System.out.println("orderUser = " + orderUser);
-	System.out.println("receiver = " + receiver);
+	//System.out.println("hp = " + hp);
+	//System.out.println("zip = " + zip);
+	//System.out.println("addr1 = " + addr1);
+	//System.out.println("addr2 = " + addr2);
+	//System.out.println("etc = " + etc);	
+	//System.out.println("orderDelivery = " + orderDelivery);
+	//System.out.println("orderCount = " + orderCount);
+	//System.out.println("orderProduct = " + orderProduct);
+	//System.out.println("orderPrice = " + orderPrice);
+	//System.out.println("orderTotal = " + orderTotal);
+	//System.out.println("orderUser = " + orderUser);
+	//System.out.println("receiver = " + receiver);
 	
 	
 	

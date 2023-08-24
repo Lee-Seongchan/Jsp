@@ -12,6 +12,9 @@ public class SQL {
 														+ "`regip` = ?, "
 														+ "`rdate`= NOW()";
 	
+	public final static String UPDATE_COMMENT = "UPDATE `Article` SET `content`=? WHERE `no`=? ";
+	
+	
 	public final static String SELECT_USER = "SELECT * FROM `User`WHERE uid = ? AND pass = ?";
 	public static final String INSERT_USER = "INSERT INTO `User` SET "
 													+ "`uid`=?,"
@@ -114,5 +117,17 @@ public class SQL {
 											+ "`orderEtc` = ?, "
 											+ "`orderUser` = ?, "
 											+ "`orderDate` = NOW()" ;
+	
+	public final static String SELECT_ORDERS = "SELECT a.*,"
+												+ "b.`pName`,"
+												+ "b.`thumb1` "
+												+ "FROM `Order` AS a "
+												+ "JOIN `Product` AS b "
+												+ "ON a.orderProduct = b.pNo "
+												+ "LIMIT ?, 10";
+		
+	
+	public final static String SELECT_ORDERS_COUNT = "SELECT COUNT(*) FROM `Order`";
+	public final static String DELETE_ORDER = "DELETE FROM `Order` WHERE `orderNo` = ? ";
 		
 }
