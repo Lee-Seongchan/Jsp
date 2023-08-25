@@ -46,7 +46,7 @@ public class User2DAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(HOST, USER, PASS);
-			PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `user1` WHERE `uid`= ? ");
+			PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `user2` WHERE `uid`= ? ");
 			psmt.setString(1, uid);
 			ResultSet rs = psmt.executeQuery();
 			

@@ -9,8 +9,8 @@
 	</head>
 	<body>
 		<h3>User1 목록</h3>
-		<a href="/Ch10/">메인</a>
-		<a href="/Ch10/user1/register.do">User1 목록</a>
+		<a href="/Ch10">메인</a>
+		<a href="/Ch10/user1/register.do">User1 등록</a>
 		
 		<table border="1">
 			<tr>

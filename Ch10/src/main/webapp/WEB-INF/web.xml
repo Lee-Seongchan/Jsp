@@ -8,9 +8,8 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    
-
   </welcome-file-list>
+  
      <!-- MVC 보안설정 -->
    <security-constraint>
    	<display-name>Prohibit Model1</display-name>
@@ -22,13 +21,13 @@
    		<role-name>nobody</role-name>
    	</auth-constraint>
    </security-constraint>
-    
-    <security-constraint>
-    	<web-resource-collection>
-    		<web-resource-name>free pages</web-resource-name>
-    		<url-pattern>/index.jsp</url-pattern>
-    	</web-resource-collection>
-    </security-constraint>
+    <!--  인덱스 페이지 접속 허용 -->
+	<security-constraint>
+	      <web-resource-collection>
+	          <web-resource-name>free page</web-resource-name>
+	          <url-pattern>/index.jsp</url-pattern>
+	      </web-resource-collection>
+	  </security-constraint>
     
     <!-- 인코딩 필터 등록 -->
     <filter>

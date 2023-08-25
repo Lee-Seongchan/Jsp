@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<!-- 
-			
 		
 		 -->
 	</head>
@@ -41,6 +40,5 @@
 		<h4>User6 실습</h4>
 		<a href="/Ch10/user6/list.do">목록</a>
 		<a href="/Ch10/user6/register.do">등록</a>
-
 	</body>
 </html>

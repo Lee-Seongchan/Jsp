@@ -1,34 +1,33 @@
 package service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+
 import java.util.List;
 
-import dto.User1DTO;
-import dto.User2DTO;
+import dao.User3DAO;
+import dto.User3DTO;
 
 public class User3Service {
 	
-	public void insertUser1(User1DTO dto) {	
+	User3DAO dao = new User3DAO();
+	
+	public void insertUser3(User3DTO dto) {
+		dao.insertUser3(null);
 	}
 	
-	public User2DTO selectUser2(String uid) {
-		return null;	
+	public User3DTO selectUser3(String uid) {
+		return dao.selectUser3(uid);	
 	}
 	
 	
-	public List<User2DTO> selectUser2s() {
-		return null;
+	public List<User3DTO> selectUser3s() {
+		return dao.selectUser3s();
 	}
 	
-	public void updateUser2(User2DTO dto) {
-
+	public void updateUser3(User3DTO dto) {
+		dao.updateUser3(dto);
 	}
 	
-	public void deleteUser2(String uid) {
-		
+	public void deleteUser3(String uid) {
+		dao.deleteUser3(uid);
 	}
 }

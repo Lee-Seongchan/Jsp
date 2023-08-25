@@ -9,26 +9,31 @@ import java.util.List;
 
 import dto.User1DTO;
 import dto.User2DTO;
+import dto.User4DTO;
 
 public class User4DAO {
 	
-	public void insertUser1(User1DTO dto) {	
+	public void insertUser4(User4DTO dto) {	
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public User2DTO selectUser2(String uid) {
+	public User4DTO selectUser4(String uid) {
 		return null;	
 	}
 	
-	
-	public List<User2DTO> selectUser2s() {
+	public List<User4DTO> selectUser4s() {
 		return null;
 	}
 	
-	public void updateUser2(User2DTO dto) {
+	public void updateUser4(User4DTO dto) {
 
 	}
 	
-	public void deleteUser2(String uid) {
+	public void deleteUser4(String uid) {
 		
 	}
 }

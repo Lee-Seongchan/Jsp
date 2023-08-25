@@ -7,9 +7,9 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<h3>User2 목록</h3>
-		<a href="/Ch10">메인</a>
-		<a href="/Ch10/user2/register.do">User2 등록</a>
+		<h3>User3 목록</h3>
+		<a href="/Ch10/">메인</a>
+		<a href="/Ch10/user3/register.do">User3 등록</a>
 		
 			<table border="1">
 				<tr>
@@ -22,14 +22,13 @@
 				
 				<c:forEach var="user" items="${users}">
 				<tr>
-					<td>${user.getUid()}</td>
-					<td>${user.getName()}</td>
-					<td>${user.getHp()}</td>
-					<td>${user.getAge()}</td>
+					<td>${user.uid}</td>
+					<td>${user.name}</td>
+					<td>${user.hp}</td>
+					<td>${user.age}</td>
 					<td>
-						<a href="/Ch10/user2/modify.do?uid=${user.getUid()}">수정</a>
-						<a href="/Ch10/user2/delete.do?uid=${user.getUid()}">삭제</a>
-
+						<a href="/Ch10/user3/modify.do?uid=${user.uid}">수정</a>
+						<a href="/Ch10/user3/delete.do?uid=${user.uid}">삭제</a>
 					</td>
 				</tr>
 				</c:forEach>

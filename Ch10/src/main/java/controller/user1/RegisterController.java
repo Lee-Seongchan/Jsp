@@ -47,7 +47,7 @@ public class RegisterController extends HttpServlet {
 	
 		service.insertUser1(dto);
 		
-		response.sendRedirect("/Ch10/user1/list.do");
+		response.sendRedirect("/list.do");
 		
 	}
 
