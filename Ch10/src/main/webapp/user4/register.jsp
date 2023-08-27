@@ -8,6 +8,8 @@
 	<body>
 		<form action="/Ch10/user4/register.do" method="post">
 			<table border="1">
+		
+				
 				<tr>
 					<td>이름</td>
 					<td><input type="text" name="name"></td>
@@ -16,8 +18,8 @@
 				<tr>
 					<td>성별</td>
 					<td>
-						<label><input type="radio" name = "gender">남</label>
-						<label><input type="radio" name = "gender">여</label>
+						<label><input type="radio" name="gender" value = 1 checked>1</label>
+						<label><input type="radio" name="gender" value = 2>2</label>
 					</td>
 				</tr>
 				
@@ -31,11 +33,10 @@
 					<td><input type="text" name="addr"></td>
 				</tr>
 				
-				
 				<tr>
 					<td colspan="2" align="right"><input type="submit" value="등록"></td>
 				</tr>
-			</table>
+			</table>	
 		</form>
 	</body>
 </html>

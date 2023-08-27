@@ -7,28 +7,33 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.User4DAO;
 import dto.User1DTO;
 import dto.User2DTO;
+import dto.User4DTO;
 
 public class User4Service {
 	
-	public void insertUser1(User1DTO dto) {	
+	User4DAO dao = new User4DAO();
+	
+	public void insertUser4(User4DTO dto) {	
+		dao.insertUser4(dto);
 	}
 	
-	public User2DTO selectUser2(String uid) {
-		return null;	
+	public User4DTO selectUser4(String seq) {
+		return dao.selectUser4(seq);	
 	}
 	
 	
-	public List<User2DTO> selectUser2s() {
-		return null;
+	public List<User4DTO> selectUser4s() {
+		return dao.selectUser4s();
 	}
 	
-	public void updateUser2(User2DTO dto) {
-
+	public void updateUser4(User4DTO dto) {
+		dao.updateUser4(dto);
 	}
 	
-	public void deleteUser2(String uid) {
-		
+	public void deleteUser4(String seq) {
+		dao.deleteUser4(seq);
 	}
 }

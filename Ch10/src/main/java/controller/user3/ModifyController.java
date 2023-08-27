@@ -46,6 +46,7 @@ public class ModifyController extends HttpServlet{
 		
 		service.updateUser3(dto);
 		
+		
 		resp.sendRedirect("/Ch10/user3/list.do");
 		
 	}

@@ -19,7 +19,7 @@
 	try{
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(host, user, pass);
-		PreparedStatement psmt = conn.prepareStatement("INSERT INTO `user4` VALUES(?, ?, ?, ?)");
+		PreparedStatement psmt = conn.prepareStatement("INSERT INTO `user4`(`name`,`gender`,`age`,`addr`) VALUES(?, ?, ?, ?)");
 		
 		psmt.setString(1, name);
 		psmt.setString(2, gender);

@@ -11,11 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.User3DTO;
+import service.User2Service;
+import service.User3Service;
 
 @WebServlet("/user3/register.do")
 public class RegisterController extends HttpServlet{
 
 	private static final long serialVersionUID = -3143078172058698124L;
+	User3Service service = new User3Service();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,8 +41,8 @@ public class RegisterController extends HttpServlet{
 		dto.setHp(hp);
 		dto.setAge(age);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/Ch10/user3/register.do");
-		dispatcher.forward(req, resp);
+		service.insertUser3(dto);
+		resp.sendRedirect("/Ch10/user3/list.do");
 	}
 	
 }

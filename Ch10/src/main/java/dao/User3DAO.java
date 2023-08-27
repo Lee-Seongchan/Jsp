@@ -14,32 +14,33 @@ import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import db.DBHelper;
 import dto.User1DTO;
 import dto.User2DTO;
 import dto.User3DTO;
 
-public class User3DAO {
+public class User3DAO extends DBHelper{
 	
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
-	public void insertUser3(User1DTO dto) {
+	public void insertUser3(User3DTO dto) {
 		try {
-			Context initCtx = new InitialContext();
-			Context ctx = (Context)initCtx.lookup("java:comp/env");
-			DataSource ds = (DataSource) ctx.lookup("jdbc/userdb");
-			Connection conn = ds.getConnection();
-			PreparedStatement psmt = conn.prepareStatement("INSETR INTO VALUE(?, ?, ?, ? )");
+			logger.error("insertUser3...");
+			conn = getConnection();
+			psmt = conn.prepareStatement("INSERT INTO `user3` VALUES(?,?,?,?)");
 			psmt.setString(1, dto.getUid());
 			psmt.setString(2, dto.getName());
 			psmt.setString(3, dto.getHp());
 			psmt.setInt(4, dto.getAge());
 			psmt.executeUpdate();
 			
+			
+			
 			psmt.close();
 			conn.close();
 			
 		} catch (Exception e) {
-			logger.error("insert insertUser3()... Error" + e.getMessage());
+			logger.error("insertUser3()... Error" + e.getMessage());
 		}
 	}
 	
@@ -59,8 +60,12 @@ public class User3DAO {
 				dto.setName(rs.getString(2));
 				dto.setHp(rs.getString(3));
 				dto.setAge(rs.getInt(4));
+
 			}
 			
+			psmt.close();
+			rs.close();
+			conn.close();
 			
 		} catch (Exception e) {
 			logger.error("User3DAO selectUser3()...Error" + e.getMessage());
@@ -94,6 +99,10 @@ public class User3DAO {
 				users.add(dto);
 			}
 			
+			psmt.close();
+			rs.close();
+			conn.close();
+			
 		}catch (Exception e) {
 			logger.error("selectUser3()...Error" + e.getMessage());
 		}
@@ -116,7 +125,11 @@ public class User3DAO {
 			psmt.setInt(3, dto.getAge());
 			psmt.setString(4, dto.getUid());
 			psmt.executeUpdate();
-					
+			
+			
+			psmt.close();
+			conn.close();
+			
 		} catch (Exception e) {
 			logger.error("updateUser3()...Error" + e.getMessage());
 		}
@@ -134,6 +147,9 @@ public class User3DAO {
 			PreparedStatement psmt = conn.prepareStatement("DELETE FROM `user3` WHERE `uid`= ? ");
 			psmt.setString(1, uid);
 			psmt.executeUpdate();
+			
+			psmt.close();
+			conn.close();
 			
 		} catch (Exception e) {
 			logger.error("DeleteUser3()...Error" + e.getMessage());

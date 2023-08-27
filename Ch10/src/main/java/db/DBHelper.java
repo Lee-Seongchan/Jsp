@@ -3,6 +3,7 @@ package db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.naming.Context;
@@ -30,9 +31,26 @@ public class DBHelper {
 				
 				
 			} catch (Exception e) {
-				logger.error("DAO Error");
+				e.printStackTrace();
 			}
 			
-			return null;
+			return conn;
 		}
+		
+		public void close() throws SQLException {
+			if(rs != null) {
+				rs.close();
+			}
+			if(stmt != null) {
+				stmt.close();
+			}
+			if(psmt != null) {
+				psmt.close();
+			}
+			if(conn != null) {
+				conn.close();
+			}
+
+		};
+		
 }
