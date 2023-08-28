@@ -26,7 +26,7 @@
 					<td>${user.age}</td>
 					<td>${user.addr}</td>
 					<td>
-						<a href="/Ch10/user4/modify.do">수정</a>
+						<a href="/Ch10/user4/modify.do?seq="${user.seq}>수정</a>
 						<a href="/Ch10/user4/delete.do">삭제</a>
 					</td>
 				</tr>

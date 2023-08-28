@@ -18,6 +18,7 @@
 		<header>
 			<h3>Board System v1.0</h3>
 		</header>
+
 		<main>
 			<section class="register">
 				<form id="formUser" action="/Jboard1/user/registerProc.jsp" method="post">
@@ -50,8 +51,7 @@
 							<td>이름</td>
 							<td><input type="text" name="name" placeholder="이름 입력" />
 								<span class="resultName"></span>
-							</td>
-							
+							</td>		
 						</tr>
 						<tr>
 							<td>별명</td>

@@ -55,7 +55,7 @@ public class User4DAO extends DBHelper{
 			conn = getConnection();
 			psmt = conn.prepareStatement("SELECT * FROM `user4` WHERE `seq` = ?");
 			psmt.setString(1, seq);
-			psmt.executeQuery();
+			rs = psmt.executeQuery();
 			
 			if(rs.next()) { 
 				dto.setSeq(rs.getInt(1));
@@ -83,7 +83,7 @@ public class User4DAO extends DBHelper{
 			logger.info("selectUser4s()...");
 
 			conn = getConnection();
-			psmt = conn.prepareStatement("SELECT * FROM user4");
+			psmt = conn.prepareStatement("SELECT * FROM `user4` ");
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -93,8 +93,7 @@ public class User4DAO extends DBHelper{
 				dto.setGender(rs.getInt(3));
 				dto.setAge(rs.getInt(4));
 				dto.setAddr(rs.getString(5));			
-				
-				
+	
 				users.add(dto);
 			}
 			
