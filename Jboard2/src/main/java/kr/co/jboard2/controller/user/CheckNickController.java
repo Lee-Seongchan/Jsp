@@ -24,19 +24,21 @@ public class CheckNickController extends HttpServlet{
 	UserService service = UserService.getInstance();
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-		@Override
-		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			String nick = req.getParameter("nick");
-			int result = service.selectCountUid(nick);
-			
-			logger.info("nick : " + nick );
-			
-			// JSON 생성
-			JsonObject json = new JsonObject();
-			json.addProperty("result", result);
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String nick = req.getParameter("nick");
+		int result = service.selectCountNick(nick);
 		
-			//JSON 출력
-			PrintWriter wrier = resp.getWriter();
-			wrier.print(json.toString());
-		}
+		logger.info("nick : " + nick );
+		System.out.println(nick);
+		System.out.println(result);
+		
+		// JSON 생성
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
+	
+		//JSON 출력
+		PrintWriter wrier = resp.getWriter();
+		wrier.print(json.toString());
+	}
 }

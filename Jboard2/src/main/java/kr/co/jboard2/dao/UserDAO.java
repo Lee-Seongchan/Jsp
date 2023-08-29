@@ -47,9 +47,91 @@ public class UserDAO extends DBHelper{
 		}
 	}
 	
-	public UserDTO selectUser(String uid) {
-		return null;
+	public UserDTO selectUser(String uid, String pass) {
+		
+		UserDTO dto = null; //select 리턴문이 없을 때 null로 리턴하기 위해 생성자와 초기화를 분리 시킨다.
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_USER);
+			psmt.setString(1, uid);
+			psmt.setString(2, pass);
+			
+			rs= psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new UserDTO();
+				dto.setUid(rs.getString(1));
+				dto.setPass(rs.getString(2));
+				dto.setName(rs.getString(3));
+				dto.setNick(rs.getString(4));
+				dto.setEmail(rs.getString(5));
+				dto.setHp(rs.getString(6));
+				dto.setRole(rs.getString(7));
+				dto.setZip(rs.getString(8));
+				dto.setAddr1(rs.getString(9));
+				dto.setAddr2(rs.getString(10));
+				dto.setRegip(rs.getString(11));
+				dto.setRegDate(rs.getString(12));
+				dto.setLeaveDate(rs.getString(13));
+				
+			}
+			close();
+			
+			
+		} catch (Exception e) {
+			logger.error("selectUser error..." + e.getMessage());
+		}
+		
+		
+		return dto;
 	}
+	
+	
+	
+	
+public UserDTO selectUserByNameAndEmail(String name, String email) {
+		
+		UserDTO dto = null; //select 리턴문이 없을 때 null로 리턴하기 위해 생성자와 초기화를 분리 시킨다.
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_USER);
+			psmt.setString(1, name);
+			psmt.setString(2, email);
+			
+			rs= psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new UserDTO();
+				dto.setUid(rs.getString(1));
+				dto.setPass(rs.getString(2));
+				dto.setName(rs.getString(3));
+				dto.setNick(rs.getString(4));
+				dto.setEmail(rs.getString(5));
+				dto.setHp(rs.getString(6));
+				dto.setRole(rs.getString(7));
+				dto.setZip(rs.getString(8));
+				dto.setAddr1(rs.getString(9));
+				dto.setAddr2(rs.getString(10));
+				dto.setRegip(rs.getString(11));
+				dto.setRegDate(rs.getString(12));
+				dto.setLeaveDate(rs.getString(13));
+				
+			}
+			close();
+			
+			
+		} catch (Exception e) {
+			logger.error("selectUser error..." + e.getMessage());
+		}
+		
+		
+		return dto;
+	}
+	
+	
+	
 	
 	public List<UserDTO> selectUsers() {
 		return null;
@@ -127,7 +209,7 @@ public class UserDAO extends DBHelper{
 	 }
 	
 	
-	// 이메일 체크	
+	// 이메일 중복 체크	
 	public int selectCountEmail(String email) {
 		int result = 0;
 		
@@ -144,6 +226,29 @@ public class UserDAO extends DBHelper{
 			close();	
 		} catch (Exception e) {
 			logger.error("selectCountEmail error..." + e.getMessage());
+		}
+		
+		return result;
+	}
+	
+	
+	public int selectCountNameAndEmail(String email, String name) {
+		int result = 0;
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_NAME_EMAIL);
+			psmt.setString(1, name);
+			psmt.setString(2, email);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			close();	
+		} catch (Exception e) {
+			logger.error("selectCountNameAndEmail error..." + e.getMessage());
 		}
 		
 		return result;

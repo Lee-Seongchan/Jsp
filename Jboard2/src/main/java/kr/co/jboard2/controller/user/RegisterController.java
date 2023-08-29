@@ -30,16 +30,24 @@ public class RegisterController extends HttpServlet{
 		String pass1 = req.getParameter("pass1");
 		String name = req.getParameter("name");
 		String nick = req.getParameter("nick");
-		String hp = req.getParameter("hp");
 		String email = req.getParameter("email");
-		String regip = req.getParameter("regip");
+		String hp = req.getParameter("hp");
+		String zip = req.getParameter("zip");
+		String addr1 = req.getParameter("addr1");
+		String addr2 = req.getParameter("addr2");
+		String regip = req.getRemoteAddr();
+		
 		
 		UserDTO dto = new UserDTO();
 		dto.setUid(uid);
 		dto.setPass(pass1);
 		dto.setName(name);
 		dto.setEmail(email);
+		dto.setNick(nick);
 		dto.setHp(hp);
+		dto.setZip(zip);
+		dto.setAddr1(addr1);
+		dto.setAddr2(addr2);
 		dto.setRegip(regip);
 		
 		service.insertUser(dto);

@@ -27,7 +27,7 @@ public class CheckHpController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String hp = req.getParameter("hp"); //중복확인 하려는 HP
-		int result = service.selectCountUid(hp);
+		int result = service.selectCountHp(hp);
 		
 		logger.info("result : " + result );
 		
