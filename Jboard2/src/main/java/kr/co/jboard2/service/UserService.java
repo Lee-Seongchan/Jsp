@@ -78,7 +78,17 @@ public class UserService {
 		return dao.selectUserByNameAndEmail(name, email);
 	}
 	
+	public int selectCountUidAndEmail(String uid, String email) {
+		return dao.selectCountUidAndEmail(uid, email);
+	}
 	
+	public int updateUserPass(String uid, String pass) {
+		return dao.updateUserPass(uid, pass);
+	}
+	
+	public int updateUserForWithdraw(String uid) {
+		return dao.updateUserForWithdraw(uid);
+	}
 	
 	
 	

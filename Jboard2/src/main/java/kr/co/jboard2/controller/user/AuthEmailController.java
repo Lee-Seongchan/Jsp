@@ -30,28 +30,56 @@ public class AuthEmailController extends HttpServlet{
 		String type = req.getParameter("type");
 		String name = req.getParameter("name");
 		String email = req.getParameter("email");
+		String uid = req.getParameter("uid");
 		
 		
 		logger.info("email : " + email);
 		logger.info("name : " + name);
+		logger.info("uid : " + uid);
+		logger.info("type : " + type);
 		
 		int result = 0;
 		int status = 0;
 		
-		if(type == "REGISTER") {
-			logger.debug("here1...");	
+		if(type.equals("REGISTER")) {
+			logger.debug("register...");	
 			// 회원가입할 때 이메일 인증
 			result = service.selectCountEmail(email);
-			status = service.sendCodeByEmail(email);
+			
+			if(result == 0) {
+				status = service.sendCodeByEmail(email);
+			}
+		
 		}else if(type.equals("FIND_ID")){
 			// 아이디 찾기할 때 이메일 인증
-			logger.debug("here2...");
+			logger.debug("AuthEmailController find_id...");
 			
 			result = service.selectCountNameAndEmail(name, email);
 		
 			if(result == 1) {
-				logger.debug("here3...");
+				logger.debug("Find ID result == 1...");
 				
+				status = service.sendCodeByEmail(email);
+			}
+		}else if(type.equals("FIND_PASS")) {
+			//비밀번호 찾기할 때 이메일 인증
+			logger.debug("AuthEmailController find_pass");
+			
+			result = service.selectCountUidAndEmail(uid, email);
+			
+			if(result == 1) {
+				logger.debug("Find_Pass result == 1...");
+				
+				status = service.sendCodeByEmail(email);
+			}
+			
+		}else if(type.equals("MODIFY")) {
+			
+			//이메일을 수정할 때 이메일 인증
+			result = service.selectCountEmail(email);
+			
+			//이메일 중복검사.
+			if(result == 0) {
 				status = service.sendCodeByEmail(email);
 			}
 		}

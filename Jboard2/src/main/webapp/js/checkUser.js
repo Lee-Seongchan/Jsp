@@ -1,14 +1,17 @@
 /**
  * 
  */
-window.onload = function name() {
+
+$(function(){
+	
 		
 		//아이디 중복체크
 		const inputUid = document.getElementsByName("uid")[0];
 		const uidResult =  document.getElementsByClassName("uidResult")[0];
 		const btnCheckUid = document.getElementById("btnCheckUid");
 		
-		btnCheckUid.onclick =  function(){
+		if(btnCheckUid != null){
+			btnCheckUid.click =  function(){
 			
 			const uid = inputUid.value;
 			
@@ -20,6 +23,9 @@ window.onload = function name() {
 				return;
 			}
 			
+		}
+		
+	
 			
 			// 서버 전송
 			const xhr = new XMLHttpRequest(); //json요청
@@ -108,5 +114,4 @@ window.onload = function name() {
 	
 			});
 		});
-		
-	}//onload end
+	});

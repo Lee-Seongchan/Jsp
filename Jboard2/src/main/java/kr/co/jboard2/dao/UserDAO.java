@@ -137,7 +137,25 @@ public UserDTO selectUserByNameAndEmail(String name, String email) {
 		return null;
 	}
 	public void updateUser(UserDTO dto) {
-		
+			
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_USER);
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getNick());
+			psmt.setString(3, dto.getEmail());
+			psmt.setString(4, dto.getHp());
+			psmt.setString(5, dto.getZip());
+			psmt.setString(6, dto.getAddr1());
+			psmt.setString(7, dto.getAddr2());
+			psmt.setString(8, dto.getUid());
+			psmt.executeUpdate();
+			close();
+		} catch (Exception e) {
+			logger.error("updateUser() error..." + e.getMessage());
+			
+			
+		}
 	}
 	public void deleteUser(String uid) {}
 	
@@ -255,5 +273,60 @@ public UserDTO selectUserByNameAndEmail(String name, String email) {
 	}
 	
 	
+	//아이디와 이메일을 이용하여 일치하는 정보가 있는지 찾기
+		public int selectCountUidAndEmail(String uid, String email) {
+			int result = 0;
+			
+			try {
+				conn = getConnection();
+				psmt = conn.prepareStatement(SQL.SELECT_COUNT_UID_EMAIL);
+				psmt.setString(1, uid);
+				psmt.setString(2, email);
+				rs = psmt.executeQuery();
+				
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+				
+				close();	
+			} catch (Exception e) {
+				logger.error("selectCountUidAndEmail error..." + e.getMessage());
+			}
+			return result;
+		}
+		
+		public int updateUserPass(String uid, String pass) {
+			int result = 0;
+			try {
+				conn = getConnection();
+				psmt = conn.prepareStatement(SQL.UPDATE_USER_PASS);
+				psmt.setString(1, pass);
+				psmt.setString(2, uid);
+				result = psmt.executeUpdate();
+				close();
+
+			} catch (Exception e) {
+				logger.error("updateUserPass() error : " + e.getMessage());
+			}
+			return result;
+		}
+		
+		public int updateUserForWithdraw(String uid) {
+			int result = 0;
+			try {
+				conn = getConnection();
+				psmt = conn.prepareStatement(SQL.UPDATE_USER_FOR_WITHDRAW);
+				psmt.setString(1, uid);
+				result = psmt.executeUpdate();
+				close();
+			} catch (Exception e) {
+				logger.error("updateUserForWithdraw() error : " + e.getMessage());
+			}
+			
+			return result;
+		}
+		
+		
+		
 	
 }

@@ -1,24 +1,50 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file ="./_header.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="/Jboard2/js/validation.js"></script>
+
+
+<script>
+	window.onload = function(){
+		//자바스크립트 폼 전송.
+		const btnNext = document.getElementById("btnPassChange");
+		const formFindPassChange = document.getElementById("formFindPassChange");
+		
+		btnPassChange.onclick = function(e){
+			e.preventDefault();
+			
+			if(isPassOk){
+				formFindPassChange.submit();
+			}else{
+				alert("변경 비밀번호가 유효하지 않거나 일치하지 않습니다.");
+			}
+			
+		}
+	}
+	
+</script>
+
         <main id="user">
             <section class="find findPassChange">
-                <form action="#">
+                <form id = "formFindPassChange" action="/Jboard2/user/findPassChange.do" method="post">
+                    <input type="hidden" name="uid" value="${sessionScope.uid}">
                     <table border="0">
                         <caption>비밀번호 변경</caption>                        
                         <tr>
                             <td>아이디</td>
-                            <td>honggildong</td>
+                            <td>${uid}</td>
                         </tr>
                         <tr>
                             <td>새 비밀번호</td>
                             <td>
-                                <input type="email" name="pass1" placeholder="새 비밀번호 입력"/>
+                                <input type="password" name="pass1" placeholder="새 비밀번호 입력"/>
                             </td>
                         </tr>
                         <tr>
                             <td>새 비밀번호 확인</td>
                             <td>
-                                <input type="email" name="pass1" placeholder="새 비밀번호 입력"/>
+                                <input type="password" name="pass2" placeholder="새 비밀번호 입력 확인"/>
+                                <span class="passResult"></span>
                             </td>
                         </tr>
                     </table>                                        
@@ -30,8 +56,8 @@
                 </p>
 
                 <div>
-                    <a href="./login.html" class="btn btnCancel">취소</a>
-                    <a href="./login.html" class="btn btnNext">다음</a>
+                    <a href="./login.do" class="btn btnCancel">취소</a>
+                    <a href="#" id="btnPassChange" class="btn btnNext">비밀번호 변경</a>
                 </div>
             </section>
         </main>
