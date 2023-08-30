@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file ="./_header.jsp" %>
+
+<script src="/Jboard2/js/validation.js"></script>
+<script src="/Jboard2/js/authEmail.js"></script>
         <main id="user">
             <section class="find findPass">
                 <form action="#">

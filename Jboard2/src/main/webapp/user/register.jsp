@@ -9,8 +9,8 @@
 
         <main id="user">
             <section class="register">
-
                 <form id="formUser" action="/Jboard2/user/register.do" method="post">
+                	<input type="hidden" name="type" value="REGISTER"/>
                     <table border="1">
                         <caption>사이트 이용정보 입력</caption>
                         <tr>

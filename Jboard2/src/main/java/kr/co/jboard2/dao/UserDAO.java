@@ -89,14 +89,14 @@ public class UserDAO extends DBHelper{
 	
 	
 	
-	
+// 아이디와 비번을 이용하여 유저 정보 출력	
 public UserDTO selectUserByNameAndEmail(String name, String email) {
 		
 		UserDTO dto = null; //select 리턴문이 없을 때 null로 리턴하기 위해 생성자와 초기화를 분리 시킨다.
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_USER);
+			psmt = conn.prepareStatement(SQL.SELECT_USER_BY_NAME_AND_EMAIL);
 			psmt.setString(1, name);
 			psmt.setString(2, email);
 			
@@ -231,8 +231,8 @@ public UserDTO selectUserByNameAndEmail(String name, String email) {
 		return result;
 	}
 	
-	
-	public int selectCountNameAndEmail(String email, String name) {
+	//이름과 이메일을 이용하여 아이디 찾기
+	public int selectCountNameAndEmail(String name, String email) {
 		int result = 0;
 		
 		try {

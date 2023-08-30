@@ -8,13 +8,15 @@
 		
 		$("#btnEmailCode").click(function(){
 			
-			//서버로 전송 ajax
+			//서버로 전송 ajax			
+			const type = $("input[name=type]").val();
 			const name = $("input[name=name]").val();
 			const email = $("input[name=email]").val();
 			
 			console.log('here1');
 	
 			const jsonData = {
+					"type":type,
 					"name":name ,
 					"email":email
 			}; //jsonData end
@@ -37,7 +39,7 @@
 					data: jsonData,
 					dataType: "json",
 					success:function(data){
-						//console.log(data);  인증코드 값
+						console.log(data);
 						
 						if(data.result > 0){
 								$(".resultEmail").css("color","red").text("이미 사용중인 이메일 입니다.");
