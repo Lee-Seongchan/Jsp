@@ -54,7 +54,7 @@ public class LoginController extends HttpServlet{
 			System.out.println("session = " + session );
 			
 			//리다이렉트
-			response.sendRedirect("/Jboard2/list.do");
+			response.sendRedirect("/Jboard2/list.do?pg=1&search=");
 			
 		}else {
 			//리다이렉트

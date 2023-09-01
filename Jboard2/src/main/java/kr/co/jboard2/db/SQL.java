@@ -60,6 +60,7 @@ public class SQL {
 	public final static String INSERT_ARTICLE = "INSERT INTO `Article` SET "
 												+ "`title`= ?, "
 												+ "`content`= ?, "
+												+ "`file`= ?, "
 												+ "`writer`= ?, "
 												+ "`regip`= ?, "
 												+ "`rdate`= NOW() ";
@@ -72,18 +73,35 @@ public class SQL {
 													+ "`rdate`= NOW() ";
 	
 	
-	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` WHERE `no` = ?";
+	public final static String SELECT_ARTICLE = "SELECT * "
+												+ "FROM `Article` AS a "
+												+ "LEFT JOIN `File` AS b "
+												+ "ON a.`no` = b.`ano`WHERE `no` = ?";
+	
+
 	
 	
-	
+	//모든 글 조회
 	public final static String SELECT_ARTICLES = "SELECT "
 												+ "a.*, "
 												+ "b.`nick` "
 												+ "FROM `Article` AS a "
 												+ "JOIN `User` AS b ON a.writer = b.uid "
-												+ "WHERE `parent`= 0 "
+												+ "WHERE `parent`= 0 and `title` "
 												+ "ORDER BY `no` DESC "
 												+ "LIMIT ?, 10"; //시작위치(0부터 시작), 반환갯수
+	
+	
+	public final static String SELECT_ARTICLES_FOR_SEARCH = "SELECT "
+												+ "a.*, "
+												+ "b.`nick` "
+												+ "FROM `Article` AS a "
+												+ "JOIN `User` AS b ON a.writer = b.uid "
+												+ "WHERE `parent`= 0 and `title` LIKE ?"
+												+ "ORDER BY `no` DESC "
+												+ "LIMIT ?, 10"; //시작위치(0부터 시작), 반환갯수
+	
+	
 	
 	public final static String SELECT_COMMENTS = "SELECT "
 												+ "a.*, "
@@ -93,8 +111,11 @@ public class SQL {
 												+ "WHERE `parent` = ?";
 
 							
-
+	
+	public final static String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `Article`";
+	
 	public final static String SELECT_COUNT_TOTAL = "SELECT Count(*) FROM `Article` WHERE `parent`=0";
+	public final static String SELECT_COUNT_TOTAL_FOR_SEARCH = "SELECT Count(*) FROM `Article` WHERE `Parent` = 0 AND `title` LIKE ? ";
 	
 	
 	public final static String UPDATE_ARTICLE = "UPDATE `Article` SET `title`=?, `content` = ? WHERE `no` = ?";
@@ -110,6 +131,15 @@ public class SQL {
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=? ";
 	
 	
+	//FILE
 	
+	public final static String INSERT_FILE = "INSERT INTO `File` SET "
+											+ "`ano` = ?, "
+											+ "`ofile` = ?, "
+											+ "`sfile` = ?, "
+											+ "`rdate` = NOW() ";
+	
+	public final static String SELECT_FILE = "SELECT * FROM `File` WHERE `fno` = ? ";
+	public final static String DELETE_FILE = "DELETE FROM `File` WHERE `ano` = ? ";   //하나의 글에 여러 파일이 있을 수 있으므로 파일 번호가 아닌 글 번호로 지움
 }
 

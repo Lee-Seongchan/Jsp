@@ -2,7 +2,6 @@ package kr.co.jboard2.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
@@ -13,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -25,19 +20,15 @@ import kr.co.jboard2.dto.FileDTO;
 import kr.co.jboard2.service.ArticleService;
 import kr.co.jboard2.service.FileService;
 
-@WebServlet("/write.do")
-public class WriteController extends HttpServlet{
+@WebServlet("/write.do2121213")
+public class WriterController222 extends HttpServlet {
 	private static final long serialVersionUID = 992090960044622875L;
-	
-	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	private ArticleService aService = ArticleService.Instance;
 	private FileService fService = FileService.INSTANCE;
-	
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/write.jsp");
 		dispatcher.forward(req, resp);
@@ -45,57 +36,60 @@ public class WriteController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//파일업로드										
-		MultipartRequest mr = aService.uploadFile(req);
 		
-		//폼 데이터 수신
-		String title = mr.getParameter("title");
+		// 파일 업로드 경로 구하기 
+		ServletContext ctx = req.getServletContext();
+		String path = ctx.getRealPath("/upload");
+		
+		// 최대 업로드 파일 크기
+		int maxSize = 1024 * 1024 * 10;
+		
+		// 파일 업로드 및 Multipart 객체 생성
+		MultipartRequest mr = new MultipartRequest(req, path, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		
+		// 폼 데이터 수신
+		String title   = mr.getParameter("title");
 		String content = mr.getParameter("content");
-		String writer = mr.getParameter("writer");
-		String oName = mr.getOriginalFileName("file");
-		String regip = req.getRemoteAddr();
+		String writer  = mr.getParameter("writer");
+		String oName   = mr.getOriginalFileName("file");		
+		String regip   = req.getRemoteAddr();
 		
-		
-		logger.debug("WriterController title " + title);
-		logger.debug("WriterController content " + content);
-		logger.debug("WriterController writer " + writer);
-		logger.debug("WriterController oName " + oName);
-		logger.debug("WriterController regip " + regip);
-		
-
-		//DTO 생성
+		// DTO 생성
 		ArticleDTO dto = new ArticleDTO();
 		dto.setTitle(title);
 		dto.setContent(content);
-		//dto.setFile(oName == null ? 0 : 1);
 		dto.setFile(oName);
 		dto.setWriter(writer);
 		dto.setRegip(regip);
-		
-		//글 DB INSERT
+
+		// 글 Insert
 		int no = aService.insertArticle(dto);
 		
-		//파일명 수정 및 파일 테이블 Insert
+		// 파일명 수정 및 파일 Insert
 		if(oName != null) {
-
-			String sName = aService.renameToFile(req, oName);
+			
+			int i = oName.lastIndexOf(".");
+			String ext = oName.substring(i);
+			
+			String uuid  = UUID.randomUUID().toString();
+			String sName = uuid + ext;
+			
+			File f1 = new File(path+"/"+oName);
+			File f2 = new File(path+"/"+sName);
+			
+			// 파일명 수정
+			f1.renameTo(f2);
 			
 			// 파일 테이블 Insert
-			FileDTO fileDTO = new FileDTO();
-			fileDTO.setAno(no);
-			fileDTO.setOfile(oName);
-			fileDTO.setSfile(sName);
+			FileDTO fileDto = new FileDTO();
+			fileDto.setAno(no);
+			fileDto.setOfile(oName);
+			fileDto.setSfile(sName);
 			
-			fService.insertFile(fileDTO);
-			
-			
+			fService.insertFile(fileDto);
 		}
 		
-	
-		//리다이렉트
-		resp.sendRedirect("/Jboard2/list.do");
-		
-		
-		
+		// 리다이렉트
+		resp.sendRedirect("/Jboard2/list.do123131321");
 	}
 }

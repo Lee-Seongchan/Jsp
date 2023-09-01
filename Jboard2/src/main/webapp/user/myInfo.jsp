@@ -165,7 +165,7 @@
                     </table>
         
                     <div>
-                        <a href="/Jboard2/list.do" class="btn btnCancel">취소</a>
+                        <a href="/Jboard2/list.do?pg=1&search=" class="btn btnCancel">취소</a>
                         <input type="submit" value="회원수정" class="btn btnRegister"/>
                     </div>
         
