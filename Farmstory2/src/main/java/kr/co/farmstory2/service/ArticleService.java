@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.farmstory2.dao.ArticleDAO;
+import kr.co.farmstory2.db.SQL;
 import kr.co.farmstory2.dto.ArticleDTO;
 
 public enum ArticleService {
@@ -40,6 +41,15 @@ public enum ArticleService {
 	//전체글 조회
 	public int selectCountTotal(String cate) {
 		return dao.selectCountTotal(cate);
+	}
+	
+	public int insertComment(ArticleDTO dto) {
+		return dao.insertComment(dto);
+	}
+	
+	
+	public List<ArticleDTO> selectComments(String parent) {
+		return dao.selectComments(parent);
 	}
 		
 		

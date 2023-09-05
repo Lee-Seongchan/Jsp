@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
   		<div id="sub">
             <div><img src="/Farmstory2/images/sub_top_tit5.png" alt="COMMUNITY"></div>
             <section class="community">
@@ -16,8 +18,13 @@
                 </aside>
                 <article>
                     <nav>
-                        <img src="/Farmstory2/images/sub_nav_tit_cate5_tit3.png" alt="나도요리사"/>
+                        <img src="/Farmstory2/images/sub_nav_tit_cate5_${cate}.png" alt="나도요리사"/>
                         <p>
-                            HOME > 커뮤니티 > <em>나도요리사</em>
+                            HOME > 커뮤니티 > 
+                            <c:if test="${cate eq 'notice'}"><em>공지사항</em></c:if>
+		                    <c:if test="${cate eq 'menu'}"><em>오늘의 식단</em></c:if>
+		                    <c:if test="${cate eq 'chef'}"><em>나도요리사</em></c:if>
+		                    <c:if test="${cate eq 'qua'}"><em>1:1고객문의</em></c:if>
+		                    <c:if test="${cate eq 'faq'}"><em>자주믇는질문</em></c:if>
                         </p>
                     </nav>

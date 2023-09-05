@@ -75,6 +75,22 @@ public class SQL {
 	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent` = ?";
 	
 	
+	//comment
+	//댓글 입력
+	public final static String INSERT_COMMENT = "INSERT INTO `Article` SET "
+																+ "`parent`=?, "
+																+ "`content`=?,"
+																+ "`writer`=?,"
+																+ "`regip`=?,"
+																+ "`rdate`=NOW()";
+	
+	//댓글 출력
+	public final static String SELECT_COMMENTS = "SELECT "
+														+ "a.*, "
+														+ "b.`nick` "
+														+ "FROM `Article` AS a "
+														+ "JOIN `User` AS b ON a.writer = b.uid "
+														+ "WHERE `parent`=?";
 	
 	//File
 	public final static String INSERT_FILE = "INSERT INTO `File` SET "
@@ -84,6 +100,6 @@ public class SQL {
 												+ "`rdate` = NOW() ";
 	
 	public final static String SELECT_FILE = "SELECT * FROM `File` WHERE `fno` = ? ";
-										
+	public final static String DELETE_FILE = "DELETE FROM `File` WHERE `ano` = ? ";   //하나의 글에 여러 파일이 있을 수 있기 때문에								
 	
 }

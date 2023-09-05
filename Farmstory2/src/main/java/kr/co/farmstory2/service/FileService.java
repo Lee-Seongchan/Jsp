@@ -17,8 +17,8 @@ public enum FileService {
 		dao.insertFile(dto);
 	}
 	
-	public void selectFile() {
-		
+	public FileDTO selectFile(String fno) {
+		return dao.selectFile(fno);
 	}
 	
 	public void selectFiles() {
@@ -29,8 +29,8 @@ public enum FileService {
 		
 	}
 	
-	public void deleteFile() {
-		
+	public int deleteFile(String no) {
+		return dao.deleteFile(no);
 	}
 	
 	

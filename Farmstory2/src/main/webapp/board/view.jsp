@@ -2,6 +2,33 @@
 <%@ include file="../_header.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="./_aside${group}.jsp"/>
+		
+<script>
+	
+	$(function(){
+		$("#btnComment").click(function(e){
+			e.preventDefault();
+			
+			const parent  = $("#formComment > input[name=parent]").val();
+			const content = $("#formComment > textarea[name=content]").val();
+			const writer  = $("#formComment > input[name=writer]").val();
+			const nick = '${sessUser.nick}';
+			
+			const jsonData = {
+					"parent" : parent,
+					"content" : content,
+					"writer":writer
+			};
+		
+			console.log("jsonData : " + JSON.stringify(jsonData));
+		
+		
+	})
+
+</script>
+		
+		
+		
 			<section class="view">
 			    <h3>글보기</h3>
 			    
@@ -10,6 +37,7 @@
 			            <td>제목</td>
 			            <td><input type="text" name="title" value="${article.title}" readonly/></td>
 			        </tr>
+			       <c:if test="${article.file > 0}">
 			        <tr>
 			            <td>첨부파일</td>
 			            <td>
@@ -17,6 +45,7 @@
 			                <span>${article.fileDto.download}회 다운로드</span>
 			            </td>
 			        </tr>
+			       </c:if> 
 			        <tr>
 			            <td>내용</td>
 			            <td>
@@ -34,7 +63,7 @@
 			    <section class="commentList">
 			        <h3>댓글목록</h3>
 			        <article class="comment">
-			        	<form action="#" method="post">
+			        	<form id="formComment" action="#" method="post">
 							<span>
 								<span>닉네임</span>
 								<span>23-09-04</span>
@@ -54,13 +83,17 @@
 			    <!-- 댓글입력폼 -->
 			    <section class="commentForm">
 			        <h3>댓글쓰기</h3>
-			        <form action="#" method="post">
+	                <form id="formComment" action="#" method="post" enctype="multipart/form-data">
+		            	<input type="hidden" name="parent" value="${article.no}"/>
+		            	<input type="hidden" name="writer" value="${sessUser.uid}"/>
+		            	<input type="hidden" name="nick" value="${sessUser.nick}"/>
 			            <textarea name="content"></textarea>
 			            <div>
 			                <a href="#" class="btnCancel">취소</a>
-			                <input type="submit" class="btnWrite" value="작성완료"/>
+			                <input type="submit" id="btnComment" class="btnWrite" value="작성완료"/>
 			            </div>
 			        </form>
+
 			    </section>
 			</section>
 			<!-- 내용 끝 -->
