@@ -171,12 +171,12 @@ let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
 		
 				console.log(typeof data.result);
 				if(data.result >= 1){
-					$('.resultNick').css('color', 'green').text(' 가능한 별명 입니다.');
+					$('.resultNick').css('color', 'red').text('이미 사용중인 별명 입니다.');
 					console.log("1"+data.result);
 					isNickOk = false;
 					
 				}else{
-					$('.resultNick').css('color', 'green').text('사용ㅁㅁ 가능한 별명 입니다.');
+					$('.resultNick').css('color', 'green').text('사용 가능한 별명 입니다.');
 					console.log("2"+data.result);
 					isNickOk = true;
 					
@@ -192,19 +192,21 @@ let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
 		
 		
 		//휴대폰 중복체크
-		$("input[name=hp]").focusout(function(){
+		$('input[name=hp]').focusout(function(){
 			
 			//입력데이터 받기
-			const resultHp = $("#resultHp").val();
-			const hp = $("#hpid").val();
+			const hp =$('input[name=hp]').val();
+			const resultHp = $('span[id=resultHp]').text('');
+		
+			console.log("hp = " + hp); 
 			
 			if(!hp.match(reHp)){
-				resultHp.css("color","red").text('유효한 휴대폰 번호가 아닙니다');
+				$("#resultHp").css("color","red").text('유효한 휴대폰 번호가 아닙니다');
 				isHpOk = false;
-				return;
+				
 			}
 			
-			/* const url = '/Farmstory2/user/checkHp.do?hp='+this.value;
+			const url = '/Farmstory2/user/checkHp.do?hp='+this.value;
 			
 			fetch(url)
 				.then(response => response.json())
@@ -212,18 +214,15 @@ let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
 					console.log(data)
 					
 					if(data.result >=1 ){
-						resultHp.css("color", "red").text("이미 사용중인 휴대폰번호 입니다.");
+						$("#resultHp").css("color", "red").text("이미 사용중인 휴대폰번호 입니다.");
 						isHpOk = false;
 					}else{
-						resultHp.css("color", "green").text("사용 가능한 휴대폰번호 입니다.");
+						$("#resultHp").css("color", "green").text("사용 가능한 휴대폰번호 입니다.");
 						isHpOk = true;
-					}
-					
-					
-				}); */
-			
-		})
+					}	
+				});
 		
+		})//input[name=hp] end 휴대폰 중복 체크 
 	});//end
 
 </script>
@@ -280,7 +279,7 @@ let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
 						<tr>
 							<td>휴대폰</td>
 							<td>
-								<input type="text" id="hpid"name="hp" placeholder="- 포함 13자리 입력" minlength="13" maxlength="13" />
+								<input type="text" name="hp" placeholder="- 포함 13자리 입력" minlength="13" maxlength="13" />
 								<span id="resultHp"></span>
 							</td>	
 						</tr>

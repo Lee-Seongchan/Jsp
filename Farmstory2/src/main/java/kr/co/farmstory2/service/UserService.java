@@ -18,8 +18,8 @@ public enum UserService {
 		dao.insertUser(dto);
 	}
 	
-	public void selectUser() {
-		
+	public UserDTO selectUser(String uid, String pass) {
+		return dao.selectUser(uid, pass);
 	}
 
 

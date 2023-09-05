@@ -1,5 +1,6 @@
 package kr.co.farmstory2.dto;
 
+
 public class ArticleDTO {
 	private int no;
 	private int parent;
@@ -15,6 +16,18 @@ public class ArticleDTO {
 	
 	//추가필드
 	private String nick;
+	
+	//파일 dto
+	FileDTO fileDto;
+	
+
+	public FileDTO getFileDto() {
+		return fileDto;
+	}
+
+	public void setFileDto(FileDTO fileDto) {
+		this.fileDto = fileDto;
+	}
 
 	public int getNo() {
 		return no;
@@ -22,6 +35,11 @@ public class ArticleDTO {
 
 	public void setNo(int no) {
 		this.no = no;
+	}
+	
+	
+	public void setNo(String no) {
+		this.no = Integer.parseInt(no);
 	}
 
 	public int getParent() {
@@ -70,6 +88,15 @@ public class ArticleDTO {
 
 	public void setFile(int file) {
 		this.file = file;
+	}
+	
+	public void setFile(String oriName) {
+		
+		if(oriName != null) {
+			this.file = 1;
+		}else {
+			this.file = 0;
+		}
 	}
 
 	public int getHit() {

@@ -16,7 +16,7 @@ import com.google.gson.JsonObject;
 
 import kr.co.farmstory2.service.UserService;
 
-@WebServlet("/user/checkHp")
+@WebServlet("/user/checkHp.do")
 public class CheckHpController extends HttpServlet{
 
 	private static final long serialVersionUID = -5247423369331601938L;
@@ -29,7 +29,7 @@ public class CheckHpController extends HttpServlet{
 		String hp = req.getParameter("hp");
 		logger.debug("hp = " + hp);
 
-		int result = service.selectCheckNick(hp);
+		int result = service.selectCheckHp(hp);
 		logger.debug("result = " + result);
 		
 		JsonObject json = new JsonObject();
