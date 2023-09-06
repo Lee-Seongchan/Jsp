@@ -91,6 +91,8 @@ public class SQL {
 														+ "FROM `Article` AS a "
 														+ "JOIN `User` AS b ON a.writer = b.uid "
 														+ "WHERE `parent`=?";
+	//댓글 삭제
+	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=? ";
 	
 	//File
 	public final static String INSERT_FILE = "INSERT INTO `File` SET "

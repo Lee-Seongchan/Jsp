@@ -18,6 +18,7 @@
  
    <script>
    	const success = ${success};
+   	console.log("success = " + success);
    	
    	if(success == 100){
    		alert('로그인에 실패 했습니다. 아이디, 비번을 다시 확인하시기 바랍니다.');

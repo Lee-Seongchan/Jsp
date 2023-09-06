@@ -1,6 +1,7 @@
 package kr.co.farmstroy2.controller.board;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,6 +39,11 @@ public class ViewController extends HttpServlet{
 		//글 보기
 		ArticleDTO article = service.selectArticle(no);
 		
+		
+		//댓글보기 
+		List<ArticleDTO> comments = service.selectComments(no);
+		
+		req.setAttribute("comments", comments);
 		req.setAttribute("article", article);
 		req.setAttribute("group", group);
 		req.setAttribute("cate", cate);

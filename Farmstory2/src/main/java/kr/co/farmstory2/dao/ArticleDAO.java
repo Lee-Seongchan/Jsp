@@ -237,6 +237,22 @@ import kr.co.farmstory2.dto.FileDTO;
 		return comments;
 	}
 	
+	public int deleteComment(String no) {
+		int result = 0;
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_COMMENT);
+			psmt.setString(1, no);
+			result = psmt.executeUpdate();
+
+			close();
+			
+		} catch (Exception e) {
+			logger.debug("deleteComment()" + e.getMessage());
+		}
+		return result;
+	}
 	
 	
 }
