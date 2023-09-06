@@ -84,6 +84,15 @@ public class SQL {
 																+ "`regip`=?,"
 																+ "`rdate`=NOW()";
 	
+	//제일 최근에 쓴 댓글 
+	public final static String SELECT_COMMENT_LATEST = "SELECT "
+															+ "a.*, "
+															+ "b.`nick` "
+															+ "FROM `Article` AS a "
+															+ "JOIN `User` AS b ON a.writer = b.uid "
+															+ "WHERE `parent`!=0 "
+															+ "ORDER BY `no` DESC LIMIT 1"; 
+	
 	//댓글 출력
 	public final static String SELECT_COMMENTS = "SELECT "
 														+ "a.*, "
@@ -91,6 +100,9 @@ public class SQL {
 														+ "FROM `Article` AS a "
 														+ "JOIN `User` AS b ON a.writer = b.uid "
 														+ "WHERE `parent`=?";
+	//댓글수정
+	public final static String UPDATE_COMMENT = "UPDATE `Article` SET `content`=? WHERE `no`=? ";
+	
 	//댓글 삭제
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=? ";
 	
@@ -103,5 +115,27 @@ public class SQL {
 	
 	public final static String SELECT_FILE = "SELECT * FROM `File` WHERE `fno` = ? ";
 	public final static String DELETE_FILE = "DELETE FROM `File` WHERE `ano` = ? ";   //하나의 글에 여러 파일이 있을 수 있기 때문에								
+	
+	
+	
+	
+	
+	
+	
+	//product
+	public final static String INSERT_PRODUCT = "INSERT INTO `Product` SET"
+													+ "`type` = ?, "
+													+ "`pName` = ?, "
+													+ "`price` = ?, "
+													+ "`delivery` = ?, "
+													+ "`stock` = ?, "
+													+ "`thumb1` = ?, "
+													+ "`thumb2` = ?, "
+													+ "`thumb3` = ?, "
+													+ "`seller` = ?, "
+													+ "`etc` = ?, "
+													+ "`rdate` = NOW()";
+	
+	public final static String SELECT_PRODUCTS = "SELECT * FROM `Product` ";
 	
 }

@@ -1,14 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file ="./_header.jsp" %>
         <main>
-            <aside>
-                <h3>주요기능</h3>
-                <ul>
-                    <li class="on"><a href="#">상품관리</a></li>
-                    <li><a href="#">주문관리</a></li>
-                    <li><a href="#">회원관리</a></li>                    
-                </ul>
-            </aside>
+               <%@ include file="./_aside.jsp" %>
             <section id="productList">
                 <nav>
                     <h3>상품목록</h3>
@@ -27,21 +21,23 @@
                             <th>재고</th>
                             <th>등록일</th>
                         </tr>
+                        <c:forEach var="product" items="${products}">
                         <tr>
                             <td><input type="checkbox" name=""/></td>
-                            <td><img src="./images/sample_item1.jpg" class="thumb" alt="샘플1"></td>
-                            <td>1011</td>
-                            <td>사과 500g</td>
-                            <td>과일</td>
-                            <td>4,000원</td>
-                            <td>100</td>
-                            <td>2023-01-01</td>
+                            <td><img src="./images/sample_${product.thumb1}.jpg" class="thumb" alt="샘플1"></td>
+                            <td>${product.pNo}</td>
+                            <td>${product.pName}</td>
+                            <td>${product.type}</td>
+                            <td>${product.price}원</td>
+                            <td>${product.stock}</td>
+                            <td>${product.rdate}</td>
                         </tr>
+                        </c:forEach>
                     </table>
 
                     <p>
                         <a href="#" class="productDelete">선택삭제</a>
-                        <a href="./productRegister.html" class="productRegister">상품등록</a>
+                        <a href="/Farmstory2/admin/productRegister.do" class="productRegister">상품등록</a>
                     </p>
                     
                     <p class="paging">

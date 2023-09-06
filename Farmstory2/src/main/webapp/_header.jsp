@@ -43,7 +43,7 @@
                 <c:if test="${not empty sessUser}">
                 	<a href="/Farmstory2/user/logout.do">로그아웃 |</a>
                 	<c:if test="${sessUser.role ne 'USER'}">
-                		<a href="/Farmstory2/admin/">관리자 |</a>
+                		<a href="/Farmstory2/admin/index.do">관리자 |</a>
                 	</c:if>              
                 </c:if>
                 <a href="/Farmstroy2/board/list.do?group=Community&cate=qna">고객센터</a>

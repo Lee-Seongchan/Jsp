@@ -826,6 +826,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 16px;
 }
 .view > section > h3 {
+    margin-right: 10px;
     font-weight: bold;
 }
 .view > .commentList > article {
@@ -844,7 +845,7 @@ input[type=number]::-webkit-outer-spin-button {
     background: transparent;
 }
 
-.view > .commentList > article  textarea.modi {
+.view > .commentList > article  textarea.modify {
 	border : 1px solid #bbb;
 	background:white;
 	
@@ -854,7 +855,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: right;
 }
 
-.view > .commentList > article  div > .can{
+.view > .commentList > article  div > .cancel{
 	display : none;
 	
 }

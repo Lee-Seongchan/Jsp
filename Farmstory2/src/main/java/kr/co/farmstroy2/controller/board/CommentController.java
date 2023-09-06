@@ -30,17 +30,23 @@ public class CommentController extends HttpServlet{
 		
 		String no = req.getParameter("no");
 		String kind = req.getParameter("kind");
+		String content = req.getParameter("content");
 		
 		logger.debug("no = " + no);
 		logger.debug("kind = " + kind);
+		logger.debug("content = " + content);
+		
 		
 		int result = 0;
 		
 		switch (kind) {
 			case "REMOVE" :
 				result = service.deleteComment(no);
-			break;
+				break;
 
+			case "MODIFY":
+				result = service.updateComment(content, no);
+				break;
 		default:
 			break;
 		}
@@ -82,16 +88,7 @@ public class CommentController extends HttpServlet{
 		
 	
 		resp.getWriter().print(json);
-		
-		//resp.setContentType("application/json;charset=UTF-8"); // <-- 이거해야 클라이언트로 전송되는 JSON 한글 안깨짐
-		
-		//json 생성
-		//Gson gson = new Gson();
-		//json 객체 만들기
-		//String strJson = gson.toJson(result);
-		//출력
-		//resp.getWriter().print(strJson);
-		
+
 		
 	
 	}

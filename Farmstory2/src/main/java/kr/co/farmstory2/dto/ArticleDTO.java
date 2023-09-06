@@ -130,6 +130,11 @@ public class ArticleDTO {
 	public String getRdate() {
 		return rdate;
 	}
+	
+	public void setRdateYYMMDD(String rdate) {
+		this.rdate = rdate.substring(2,10);
+	}
+	
 
 	public void setRdate(String rdate) {
 		this.rdate = rdate;

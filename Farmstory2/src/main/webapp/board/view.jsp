@@ -6,6 +6,8 @@
 <script>
 	
 	$(function(){
+		
+
 		$("#btnComment").click(function(e){
 		
 			e.preventDefault();
@@ -43,7 +45,8 @@
 						const date = dt.getDate();
 						const now = year + "-" + month + "-" + date;
 						
-						const article = `<article>	//동적으로 태그를 생성할 때 ``를 씀
+
+						const article = `<article>	
 											<form id="formComment" action="#" method="post">
 												<span class="nick">\${nick}</span>
 												<span class="date">\${now}</span>
@@ -100,10 +103,104 @@
 			})
 			
 			
-		})
+		})//댓글삭제 end
+		
+		//댓글수정
+		const commentURL = "/Farmstory2/board/comment.do";	
+		const formComment = document.getElementById('formComment');
+		const commentList = document.getElementsByClassName('commentList')[0];
+		
+		
+		document.addEventListener('click', async function(e){
+			
+			const article  = e.target.parentNode.closest('article');
+			const textarea = article.getElementsByTagName('textarea')[0];
+			const remove   = article.getElementsByClassName('remove')[0];
+			const cancel   = article.getElementsByClassName('cancel')[0];
+			const modify   = article.getElementsByClassName('modify')[0];
+			
+			// 수정&수정완료
+			if(e.target && e.target.classList.value == 'modify'){
+				e.preventDefault();
+				
+				const txt = e.target.innerText;
+				
+				if(txt == '수정'){
+					// 수정모드				
+					const value = textarea.value;
+					textarea.style.border = '1px solid #e4eaec';
+					textarea.style.background = '#fff';
+					textarea.readOnly = false;
+					textarea.focus();
+					
+					remove.style.display = 'none';
+					cancel.style.display = 'inline';
+					modify.innerText = '수정완료';
+					
+				}else if(txt == '수정완료'){
+					
+					if(!confirm('정말 수정 하시겠습니까?')){
+						return;
+					}
+										
+					const no = e.target.dataset['no'];
+					const content = textarea.value;
+					
+					const params = new URLSearchParams({
+						'kind': 'MODIFY',
+						'no': no,
+						'content': content
+					});
+					
+					// 데이터 서버 전송
+					const response = await fetch(commentURL+"?"+params, {
+						method: 'GET'
+					});
+								
+					// 서버 응답 데이터 수신
+					const data = await response.json();
+					console.log('data : ' + JSON.stringify(data));
+					
+					if(data.result > 0){
+						alert('수정완료 했습니다.');
+						
+						// 수정모드 해제
+						textarea.style.border = 'none';
+						textarea.style.background = 'none';
+						textarea.readOnly = true;
+						
+						remove.style.display = 'inline';
+						cancel.style.display = 'none';
+						modify.innerText = '수정';
+						
+					}else{
+						alert('수정실패 했습니다.');
+					}
+				}
+			}
+			
+			// 수정취소
+			if(e.target && e.target.classList.value == 'cancel'){
+				e.preventDefault();
+
+				const value = textarea.dataset['value'];
+				console.log('value : ' + value);
+				
+				// 수정모드 해제
+				textarea.style.border = 'none';
+				textarea.style.background = 'none';
+				textarea.readOnly = true;
+				textarea.value = value;
+				
+				remove.style.display = 'inline';
+				cancel.style.display = 'none';
+				modify.innerText = '수정';
+			}
+			
+		});// 댓글수정 addEventListener end		
 		
 	
-	})//function end
+	});//function end
 </script>
 
 <script>
@@ -156,9 +253,9 @@
 			             	
 			             	<c:if test="${sessUser.getUid() eq comment.getWriter()}">
 							<div>
-								<a href="#" class="del remove" data-no="${comment.no}">삭제</a>
-								<a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}" class="can">취소</a>
-								<a href="#" class="mod modify">수정</a>
+								<a href="#" class="remove" data-no="${comment.no}">삭제</a>
+								<a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}" class="cancel">취소</a>
+								<a href="#" class="modify" data-no="${comment.no}">수정</a>
 							</div>
 							</c:if>                
 			            </form>
