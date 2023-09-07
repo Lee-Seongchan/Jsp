@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file ="../_header.jsp" %>
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
@@ -7,7 +8,7 @@
                     <img src="../images/sub_aside_cate2_tit.png" alt="장보기"/>
 
                     <ul class="lnb">
-                        <li class="on"><a href="./market.html">장보기</a></li>
+                        <li class="on"><a href="./market.do">장보기</a></li>
                     </ul>
                 </aside>
                 <article class="list">
@@ -26,70 +27,23 @@
                         <a href="#">곡류</a>
                     </p>
                     <table border="0">
+                    <c:forEach var="product" items="${products}">
                         <tr>
                             <td>
-                                <a href="./view.html"><img src="../images/market_item1.jpg" alt="사과 500g"></a>
+                                <a href="./view.do"><img src="/Farmstory2/thumb/${product.thumb1}" alt="사과 500g" class="thumb"></a>
                             </td>
-                            <td>과일</td>
-                            <td><a href="#">사과 500g</a></td>
-                            <td><strong>4,000</strong>원</td>
-                        </tr>
-                        <tr>
                             <td>
-                                <a href="./view.html"><img src="../images/market_item2.jpg" alt="배 5kg"></a>
-                            </td>
-                            <td>과일</td>
-                            <td><a href="#">배 5kg</a></td>
-                            <td><strong>30,000</strong>원</td>
+			                    <c:choose>
+			                    	<c:when test="${product.type==1 }">과일</c:when>
+			                    	<c:when test="${product.type==2 }">야채</c:when>
+			                    	<c:when test="${product.type==3 }">곡물</c:when>
+			                    </c:choose>
+							</td>
+                            <td><a href="#">${product.pName}</a></td>
+                            <td><strong>${product.price}</strong>원</td>
                         </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item3.jpg" alt="방울토마토"></a>
-                            </td>
-                            <td>야채</td>
-                            <td><a href="#">방울토마토</a></td>
-                            <td><strong>5,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item4.jpg" alt="딸기 500g"></a>
-                            </td>
-                            <td>과일</td>
-                            <td><a href="#">딸기 500g</a></td>
-                            <td><strong>4,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item5.jpg" alt="ㅊ"></a>
-                            </td>
-                            <td>과일</td>
-                            <td><a href="#">오렌지</a></td>
-                            <td><strong>8,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item6.jpg" alt="무농약현미"></a>
-                            </td>
-                            <td>곡류</td>
-                            <td><a href="#">무농약현미</a></td>
-                            <td><strong>39,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item7.jpg" alt="팜스토리 하루야채 샐러드"></a>
-                            </td>
-                            <td>야채</td>
-                            <td><a href="#">팜스토리 하루야채 샐러드</a></td>
-                            <td><strong>9,900</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item8.jpg" alt="바나나"></a>
-                            </td>
-                            <td>과일</td>
-                            <td><a href="#">바나나</a></td>
-                            <td><strong>3,000</strong>원</td>
-                        </tr>
+                    </c:forEach>
+                 
                     </table>
 
                     <p class="paging">

@@ -24,10 +24,19 @@
                         <c:forEach var="product" items="${products}">
                         <tr>
                             <td><input type="checkbox" name=""/></td>
-                            <td><img src="./images/sample_${product.thumb1}.jpg" class="thumb" alt="샘플1"></td>
+                            <td><img src="/Farmstory2/thumb/${product.thumb1}" class="thumb" alt="샘플1"></td>
                             <td>${product.pNo}</td>
                             <td>${product.pName}</td>
-                            <td>${product.type}</td>
+                            <c:if test="${product.type eq 1}">
+                            <td>과일</td>
+                            </c:if>
+                             <c:if test="${product.type eq 2}">
+                            <td>야채</td>
+                            </c:if>
+                             <c:if test="${product.type eq 3}">
+                            <td>곡물</td>
+                            </c:if>
+                            
                             <td>${product.price}원</td>
                             <td>${product.stock}</td>
                             <td>${product.rdate}</td>

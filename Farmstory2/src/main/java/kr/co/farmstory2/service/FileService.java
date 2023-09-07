@@ -1,5 +1,7 @@
 package kr.co.farmstory2.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,8 +31,8 @@ public enum FileService {
 		
 	}
 	
-	public int deleteFile(String no) {
-		return dao.deleteFile(no);
+	public List<String> deleteFile(String ano) {
+		return dao.deleteFile(ano);
 	}
 	
 	

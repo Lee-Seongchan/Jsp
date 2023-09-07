@@ -63,7 +63,7 @@ public class SQL {
 													+ "ORDER BY a.`no` DESC "
 													+ "LIMIT ?, 10";
 	
-	public final static String SELECT_COUNT_TOTAL = "SELECT Count(*) FROM `Article` WHERE `parent`=0 and `cate` = ?"; //전체 게시글 조회
+	public final static String SELECT_COUNT_TOTAL = "SELECT Count(*) FROM `Article` WHERE `parent`= 0 and `cate` = ?"; //전체 게시글 조회
 	
 	
 	
@@ -114,13 +114,11 @@ public class SQL {
 												+ "`rdate` = NOW() ";
 	
 	public final static String SELECT_FILE = "SELECT * FROM `File` WHERE `fno` = ? ";
+	public final static String SELECT_FILE_SNAMES = "SELECT `newName` FROM `File` WHERE `ano`=?";
 	public final static String DELETE_FILE = "DELETE FROM `File` WHERE `ano` = ? ";   //하나의 글에 여러 파일이 있을 수 있기 때문에								
 	
 	
-	
-	
-	
-	
+
 	
 	//product
 	public final static String INSERT_PRODUCT = "INSERT INTO `Product` SET"
@@ -136,6 +134,21 @@ public class SQL {
 													+ "`etc` = ?, "
 													+ "`rdate` = NOW()";
 	
-	public final static String SELECT_PRODUCTS = "SELECT * FROM `Product` ";
+	public final static String SELECT_PRODUCTS_ALL = "SELECT * FROM `Product` WHERE `stock` > 0 LIMIT ?, 10 " ; //전체 게시글 조회
+	public final static String SELECT_PRODUCTS_TYPE = "SELECT * FROM `Product` WHERE `stock` > 0 AND `type`=? LIMIT ?, 10";
 	
+	public final static String SELECT_COUNT_PRODUCTS_ALL = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0"; //전체 게시글 숫자
+	public final static String SELECT_COUNT_PRODUCTS_TYPE = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0 AND `type`=?"; //타입별 전체 게시글 숫자
+	
+	public final static String SELECT_PRODUCT = "SELECT * FROM `Order` WHERE `orderNo` = ?";
+	
+	//Order
+	
+	public final static String SELECT_ORDERS = "SELECT a.*,"
+										+ "b.`pName`,"
+										+ "b.`thumb1` "
+										+ "FROM `Order` AS a "
+										+ "JOIN `Product` AS b "
+										+ "ON a.orderProduct = b.pNo ";
+										//+ "LIMIT ?, 10";
 }

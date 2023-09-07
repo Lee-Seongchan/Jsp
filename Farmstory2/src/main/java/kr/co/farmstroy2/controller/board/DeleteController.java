@@ -2,6 +2,7 @@ package kr.co.farmstroy2.controller.board;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -41,33 +42,27 @@ public class DeleteController extends HttpServlet{
 		
 		
 		//파일 삭제(DB)
-		int result = fService.deleteFile(no);
+		List<String> snames = fService.deleteFile(no);
 		
 		
 		//파일 삭제(Directory) 파일이 없으면 에러가 뜨기 때문에 조건문을 걸어줌
-		if(result > 0) {
+		if(!snames.isEmpty()) {
 			// 파일 업로드 경로 구하기
 			ServletContext ctx = req.getServletContext();
 			String path = ctx.getRealPath("/upload");
 			
-			
-			File file = new File(path+"/" + "저장된 파일명");
-			
-			if(file.exists()) {
-				file.delete(); //파일 삭제
-			}
-		
-			
+			for(String sname : snames) {
+				File file = new File(path+"/"+sname);
+				
+				if(file.exists()) {
+					file.delete();	
+				}
+			}	
 		}
 		
 		//글 + 댓글 삭제
 		aService.deleteArticle(no);
-		
-		
-		
-		
-		
-		
+
 		
 		//리다이렉트
 		resp.sendRedirect("/Farmstory2/board/list.do?group="+group+"&cate="+cate+"&pg=1");

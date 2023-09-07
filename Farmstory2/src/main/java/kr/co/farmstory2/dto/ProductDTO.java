@@ -42,7 +42,7 @@ public class ProductDTO {
 	}
 	
 	public void setType(String type) {
-		this.price = Integer.parseInt(type);
+		this.type = Integer.parseInt(type);
 	}
 	
 	

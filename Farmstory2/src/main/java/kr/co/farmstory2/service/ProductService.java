@@ -1,5 +1,6 @@
 package kr.co.farmstory2.service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.farmstory2.dao.ProductDAO;
+import kr.co.farmstory2.db.SQL;
 import kr.co.farmstory2.dto.ProductDTO;
 
 public enum ProductService {
@@ -29,12 +31,21 @@ public enum ProductService {
 		return dao.selectProducts();
 	}
 	
+	public List<ProductDTO> selectProduct2s(String type, int start) {
+		
+		return dao.selectProduct2s(type, start);
+	}
+	
 	public void updateProduct() {
 			
 	}
 	
 	public void deleteProduct() {
 		
+	}
+	
+	public int selectCountProductsTotal(String type) {
+		return dao.selectCountProductsTotal(type);
 	}
 	
 }

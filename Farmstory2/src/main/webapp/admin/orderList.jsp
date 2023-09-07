@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file ="./_header.jsp" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
         <main>
              <%@ include file="./_aside.jsp" %>
             <section id="orderList">
@@ -22,18 +23,21 @@
                             <th>주문일</th>
                             <th>확인</th>
                         </tr>
+                        
+                        <c:forEach var="order" items="${orders}">
                         <tr>
                             <td><input type="checkbox" name=""/></td>
-                            <td>1001</td>
-                            <td>사과 500g</td>                            
-                            <td>4,000원</td>
-                            <td>2</td>
-                            <td>3,000원</td>
-                            <td>11,000원</td>
-                            <td>김유신</td>
-                            <td>2023-01-01 13:06:14</td>
+                            <td>${order.orderNo}</td>
+                            <td>${order.pName}</td>                            
+                            <td>${order.orderPrice}</td>
+                            <td>${order.orderCount}</td>
+                            <td>${order.orderDelivery}</td>
+                            <td>${order.orderTotal}</td>
+                            <td>${order.orderUser }</td>
+                            <td>${order.orderDate}</td>
                             <td><a href="#" class="showPopup">[상세확인]</a></td>
                         </tr>
+                        </c:forEach>
                     </table>
 
                     <p>
