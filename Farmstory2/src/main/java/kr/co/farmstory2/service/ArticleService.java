@@ -68,6 +68,12 @@ public enum ArticleService {
 		return dao.deleteComment(no);
 	}
 	
+	//조회수 
+	public void updateViewHit(String no) {
+		dao.updateViewHit(no);
+	}
+	
+	
 	public String getPath(HttpServletRequest req, String dir) {
 		// 파일 업로드 경로 구하기 
 		ServletContext ctx = req.getServletContext();

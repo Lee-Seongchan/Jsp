@@ -1,6 +1,51 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file ="../_header.jsp" %>
+<script>
+	const price    = ${product.price};
+	const delivery = ${product.delivery};
+	
+	window.onload = function(){
+		
+		const inputCount = document.getElementsByName('count');
+		const inputTotal = document.getElementsByName('total')[0];
+		const inputFinal = document.getElementsByName('final')[0];
+		const totalNode = document.getElementsByClassName('total')[0];
+		 
+		// 상품수량 변경 <-- 여기서 왜 inputCount[0] 일까요?
+		inputCount[0].onchange = (e) => {
+			e.preventDefault();
+			
+			let count = e.target.value;
+			let total = price * count;
+			let finalPrice = total + delivery;
+			
+			console.log('finalPrice : ' + finalPrice);
+			
+			// 여기서는 왜 inputCount[1] 일까요?
+			inputCount[1].value = count;
+			inputTotal.value = total;
+			inputFinal.value = finalPrice;
+			
+			totalNode.innerText = total.toLocaleString()+'원';
+		};
+		
+		
+		// 상품구매(주문)
+		const formOrder = document.getElementById('formOrder');
+		const btnOrder = document.getElementsByClassName('btnOrder')[0];
+		btnOrder.onclick = (e)=>{
+			e.preventDefault();
+			
+			// 폼 전송
+			formOrder.submit();
+		};
+	};
+</script>
+
+
+
+
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
             <section class="market">
@@ -8,7 +53,7 @@
                     <img src="../images/sub_aside_cate2_tit.png" alt="장보기"/>
 
                     <ul class="lnb">
-                        <li class="on"><a href="./market.do">장보기</a></li>
+                        <li class="on"><a href="/Farmstory2/market/list.do">장보기</a></li>
                     </ul>
                 </aside>
                 <article class="view">
@@ -47,24 +92,33 @@
                             <tr>
                                 <td>구매수량</td>
                                 <td>
-                                    <input type="number" name="count" min="1" value="1">
+                                    <input type="number" name="count" min="1" value="1"> 
                                 </td>
                             </tr>
                             <tr>
                                 <td>합계</td>
                                 <td class="total">4,000원</td>
                             </tr>
-
-
                         </table>
                         
-                            <a href="./order.do" class="btnOrder">
-                                <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
-                            </a>
+                        <form id="formOrder" action="/Farmstory2/market/order.do" method="post">
+		                	<input type="text" name="thumb2"   value="${product.thumb2}">
+		                	<input type="text" name="pName"    value="${product.pName}">
+		                	<input type="text" name="pNo"      value="${product.pNo}">
+		                	<input type="text" name="delivery" value="${product.delivery}">
+		                	<input type="text" name="price"    value="${product.price}">
+		                	<input type="text" name="count"    value="1">
+		                	<input type="text" name="total"    value="${product.price}">                
+		                	<input type="text" name="final"    value="${product.price + product.delivery}">                
+		                </form>
+                        
+                        <a href="./order.do" class="btnOrder">
+                            <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
+                        </a>
                     </div>
                     <h3>상품설명</h3>
                     <div class="detail">
-                        <img src="../images/market_detail_sample.jpg" alt="">
+                        <img src="/Farmstory2/thumb/${product.thumb3}" alt="">
 
                     </div>
 

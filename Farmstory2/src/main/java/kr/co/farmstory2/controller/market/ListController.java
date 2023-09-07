@@ -97,7 +97,7 @@ public class ListController extends HttpServlet{
 			//페이지 시작번호 계산
 			pageStartNum =total-start;
 		
-		
+			//게시글 출력
 			List<ProductDTO> products = pService.selectProduct2s(type, start);
 			logger.debug(products.toString());
 			

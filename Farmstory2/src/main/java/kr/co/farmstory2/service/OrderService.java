@@ -16,12 +16,12 @@ public enum OrderService {
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	OrderDAO dao = new OrderDAO();
 	
-	public void insertOrder() {
-		
+	public void insertOrder(OrderDTO dto) {
+		dao.insertOrder(dto);
 	}
 	
 	public OrderDTO selectOrder(String orderNo) {
-			return dao.selectOrder(orderNo);
+		return dao.selectOrder(orderNo);
 	}
 	
 	public List<OrderDTO> selectOrders() {

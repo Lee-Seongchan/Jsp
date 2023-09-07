@@ -34,30 +34,55 @@ public class OrderDTO {
 	public void setOrderProduct(int orderProduct) {
 		this.orderProduct = orderProduct;
 	}
+	
+	public void setOrderProduct(String orderProduct) {
+		this.orderProduct = Integer.parseInt(orderProduct);
+	}
+	
 	public int getOrderCount() {
 		return orderCount;
 	}
 	public void setOrderCount(int orderCount) {
 		this.orderCount = orderCount;
 	}
+	
+	public void setOrderCount(String orderCount) {
+		this.orderCount = Integer.parseInt(orderCount);
+	}
+	
 	public int getOrderDelivery() {
 		return orderDelivery;
 	}
 	public void setOrderDelivery(int orderDelivery) {
 		this.orderDelivery = orderDelivery;
 	}
+	
+	public void setOrderDelivery(String orderDelivery) {
+		this.orderDelivery = Integer.parseInt(orderDelivery);
+	}
+	
 	public int getOrderPrice() {
 		return orderPrice;
 	}
 	public void setOrderPrice(int orderPrice) {
 		this.orderPrice = orderPrice;
 	}
+	
+	public void setOrderPrice(String orderPrice) {
+		this.orderPrice = Integer.parseInt(orderPrice);
+	}
+	
 	public int getOrderTotal() {
 		return orderTotal;
 	}
 	public void setOrderTotal(int orderTotal) {
 		this.orderTotal = orderTotal;
 	}
+	
+	public void setOrderTotal(String orderTotal) {
+		this.orderTotal = Integer.parseInt(orderTotal);
+	}
+	
 	public String getReceiver() {
 		return receiver;
 	}

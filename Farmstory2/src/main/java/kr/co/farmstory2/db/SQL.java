@@ -143,6 +143,23 @@ public class SQL {
 
 	
 	//Order
+	public static final String INSERT_ORDER = "INSERT INTO `Order` SET "
+													+ "`orderProduct`=?,"
+													+ "`orderCount`=?,"
+													+ "`orderDelivery`=?,"
+													+ "`orderPrice`=?,"
+													+ "`orderTotal`=?,"
+													+ "`receiver`=?,"
+													+ "`hp`=?,"
+													+ "`zip`=?,"
+													+ "`addr1`=?,"
+													+ "`addr2`=?,"
+													+ "`orderEtc`=?,"
+													+ "`orderUser`=?,"
+													+ "`orderDate`=NOW()";
+	
+	public final static String SELECT_ORDER = "SELECT * FROM ORDER";
+			
 	
 	public final static String SELECT_ORDERS = "SELECT a.*,"
 										+ "b.`pName`,"
@@ -151,4 +168,8 @@ public class SQL {
 										+ "JOIN `Product` AS b "
 										+ "ON a.orderProduct = b.pNo ";
 										// "LIMIT ?, 10";
+	
+	//조회수 
+	public static final String UPDATE_VIEW_HIT = " UPDATE `Article` SET `hit`=`hit`+1 where `no`=? ";
+	
 }

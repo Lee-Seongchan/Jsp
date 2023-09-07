@@ -276,4 +276,24 @@ import kr.co.farmstory2.dto.FileDTO;
 		return result;
 	}
 	
+	//조회수 
+	public void updateViewHit(String no) {
+		
+		try {
+			conn=getConnection();
+			psmt=conn.prepareStatement(SQL.UPDATE_VIEW_HIT);
+			psmt.setString(1, no);
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch (Exception e) {
+			logger.error("updateViewHit error : " + e.getMessage());
+		}
+		
+	}
+	
+	
+	
 }

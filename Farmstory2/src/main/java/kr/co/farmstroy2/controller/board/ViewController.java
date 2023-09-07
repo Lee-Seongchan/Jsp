@@ -43,6 +43,9 @@ public class ViewController extends HttpServlet{
 		//댓글보기 
 		List<ArticleDTO> comments = service.selectComments(no);
 		
+		//조회수 증가
+		service.updateViewHit(no);//게시물 조회수기능 
+		
 		req.setAttribute("comments", comments);
 		req.setAttribute("article", article);
 		req.setAttribute("group", group);
