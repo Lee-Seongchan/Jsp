@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file ="../_header.jsp" %>
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
@@ -7,7 +8,7 @@
                     <img src="../images/sub_aside_cate2_tit.png" alt="장보기"/>
 
                     <ul class="lnb">
-                        <li class="on"><a href="./market.html">장보기</a></li>
+                        <li class="on"><a href="./market.do">장보기</a></li>
                     </ul>
                 </aside>
                 <article class="view">
@@ -21,27 +22,27 @@
                     <!-- 내용 시작 -->
                     <h3>기본정보</h3>
                     <div class="basic">
-                        <img src="../images/market_item_thumb.jpg" alt="딸기 500g">
+                        <img src="/Farmstory2/thumb/${product.thumb2}" alt="딸기 500g">
 
                         <table border="0">                            
                             <tr>
                                 <td>상품명</td>
-                                <td>딸기 500g</td>
+                                <td>${product.pName}</td>
                             </tr>
                             <tr>
                                 <td>상품코드</td>
-                                <td>01</td>
+                                <td>${product.pNo}</td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
                                 <td>
-                                    <span>5,000</span>원
+                                    <span>${product.delivery}</span>원
                                     <em>3만원 이상 무료배송</em>
                                 </td>
                             </tr>
                             <tr>
                                 <td>판매가격</td>
-                                <td>4,000원</td>
+                                <td>${product.price}</td>
                             </tr>
                             <tr>
                                 <td>구매수량</td>
@@ -54,11 +55,12 @@
                                 <td class="total">4,000원</td>
                             </tr>
 
-                            <a href="./order.html" class="btnOrder">
-                                <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
-                            </a>
 
                         </table>
+                        
+                            <a href="./order.do" class="btnOrder">
+                                <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
+                            </a>
                     </div>
                     <h3>상품설명</h3>
                     <div class="detail">

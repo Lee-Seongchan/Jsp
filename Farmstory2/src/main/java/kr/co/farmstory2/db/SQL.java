@@ -133,14 +133,14 @@ public class SQL {
 													+ "`seller` = ?, "
 													+ "`etc` = ?, "
 													+ "`rdate` = NOW()";
-	
+	public final static String SELECT_PRODUCT = "SELECT * FROM `Product` WHERE `pNo`=?";
 	public final static String SELECT_PRODUCTS_ALL = "SELECT * FROM `Product` WHERE `stock` > 0 LIMIT ?, 10 " ; //전체 게시글 조회
 	public final static String SELECT_PRODUCTS_TYPE = "SELECT * FROM `Product` WHERE `stock` > 0 AND `type`=? LIMIT ?, 10";
 	
 	public final static String SELECT_COUNT_PRODUCTS_ALL = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0"; //전체 게시글 숫자
 	public final static String SELECT_COUNT_PRODUCTS_TYPE = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0 AND `type`=?"; //타입별 전체 게시글 숫자
 	
-	public final static String SELECT_PRODUCT = "SELECT * FROM `Order` WHERE `orderNo` = ?";
+
 	
 	//Order
 	
@@ -150,5 +150,5 @@ public class SQL {
 										+ "FROM `Order` AS a "
 										+ "JOIN `Product` AS b "
 										+ "ON a.orderProduct = b.pNo ";
-										//+ "LIMIT ?, 10";
+										// "LIMIT ?, 10";
 }

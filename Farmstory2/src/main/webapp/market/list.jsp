@@ -30,7 +30,7 @@
                     <c:forEach var="product" items="${products}">
                         <tr>
                             <td>
-                                <a href="./view.do"><img src="/Farmstory2/thumb/${product.thumb1}" alt="사과 500g" class="thumb"></a>
+                                <a href="./view.do?pNo=${product.pNo}"><img src="/Farmstory2/thumb/${product.thumb1}" alt="사과 500g" class="thumb"></a>
                             </td>
                             <td>
 			                    <c:choose>
@@ -47,14 +47,20 @@
                     </table>
 
                     <p class="paging">
-                        <a href="#"><</a>
-                        <a href="#" class="on">[1]</a>
-                        <a href="#">[2]</a>
-                        <a href="#">[3]</a>
-                        <a href="#">[4]</a>
-                        <a href="#">[5]</a>
-                        <a href="#">></a>
-                    </p>
+                   	<c:if test="${pageGroupStart > 1 }">
+	                   <a href="/Farmstory2/market/list.do?type=0&page=1" class="prev">처음으로</a>
+	                   <a href="/Farmstory2/market/list.do.do?type=0&page=${pageGroupStart -1}" class="prev">이전</a>
+               		</c:if>
+
+	                <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" >
+	                   <a href="/Farmstory2/market/list.do?type=0&page=${i}" class="num ${currentPage==i ? 'current':''}">${i}</a>
+	                </c:forEach>
+
+                	<c:if test="${pageGroupEnd < lastPageNum }">
+	                   <a href="/Farmstory2/market/list.do?type=0&page=${pageGroupEnd +1 }" class="next">다음</a>
+	                   <a href="/Farmstory2/market/list.do?type=0&page=${lastPageNum}" class="next">마지막으로</a>
+                 	</c:if>
+            		</p>
 
                     <!-- 내용 끝 -->
 

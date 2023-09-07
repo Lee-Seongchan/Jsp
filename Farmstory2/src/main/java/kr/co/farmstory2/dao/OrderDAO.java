@@ -20,7 +20,16 @@ public class OrderDAO extends DBHelper{
 	}
 	
 	public OrderDTO selectOrder(String orderNo) {
-			return null;
+		
+		try {
+			conn = getConnection();
+			
+		} catch (Exception e) {
+
+		}
+		
+		
+		return null;
 	}
 	
 	public List<OrderDTO> selectOrders() {

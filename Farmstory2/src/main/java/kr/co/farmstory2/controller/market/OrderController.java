@@ -16,6 +16,17 @@ public class OrderController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String thumb2 = req.getParameter("thumb2");
+		String pName = req.getParameter("pName");
+		String pNo = req.getParameter("pNo");
+		String delivey = req.getParameter("delivery");
+		String price = req.getParameter("price");
+		String count = req.getParameter("count");
+		
+		
+		
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/market/order.jsp");
 		dispatcher.forward(req, resp);
 }

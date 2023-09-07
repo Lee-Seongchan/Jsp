@@ -32,7 +32,7 @@ public class ListController extends HttpServlet{
 
 		
 		//받아야할 값
-		//pg , type
+		//page , type
 	
 		HttpSession session=req.getSession();
 		UserDTO sessUser=(UserDTO)session.getAttribute("sessUser");
@@ -46,6 +46,11 @@ public class ListController extends HttpServlet{
 			String page =req.getParameter("page");
 			String type = req.getParameter("type");
 
+			if(type == null){
+				type = "0";
+			}
+			
+			
 			logger.debug("page = " +page);
 			logger.debug("type = " +type);
 			
@@ -93,7 +98,8 @@ public class ListController extends HttpServlet{
 			pageStartNum =total-start;
 		
 		
-			List<ProductDTO> products = pService.selectProduct2s(type, pageStartNum);
+			List<ProductDTO> products = pService.selectProduct2s(type, start);
+			logger.debug(products.toString());
 			
 			req.setAttribute("products", products);
 			req.setAttribute("start", start);
