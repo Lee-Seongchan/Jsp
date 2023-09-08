@@ -47,6 +47,8 @@ public class LoginController extends HttpServlet{
 		UserDTO user = service.selectUser(uid, pass);
 		
 		if(user != null){
+			logger.info(user.toString());
+			
 			HttpSession session = req.getSession();
 			session.setAttribute("sessUser", user);
 			

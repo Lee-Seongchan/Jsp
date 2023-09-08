@@ -2,7 +2,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <%@include file ="../_header.jsp" %>
+<script>
+    $(function(){
 
+        $('#btnBuy').click(function(e){
+            e.preventDefault();
+            $('#formOrder').submit();
+        });
+
+        $('#btnShopping').click(function(e){
+
+            e.preventDefault();
+
+            if(confirm("주문을 취소하시겠습니까?")){
+                location.href="/Farmstory2/market/list.do?type=0&page=1";
+            }
+        });
+    });
+</script>
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
             <section class="market">
@@ -55,15 +72,17 @@
                     </div>
                     <h3>주문정보 입력</h3>
                     <div class="shipping">
+                    <form id = formOrder action="/Farmstory2/market/orderComplete.do" method="post">
                         <input type="hidden" name="orderProduct" value="${pNo}"/>
 		                <input type="hidden" name="orderCount" value="${count}"/>
 		                <input type="hidden" name="orderDelivery" value="${delivery}"/>
 		                <input type="hidden" name="orderPrice" value="${price}"/>
 		                <input type="hidden" name="orderTotal" value="${finalPrice}"/>
+		                <input type="hidden" name="orderUser" readonly  value="${sessUser.uid}"/>
                         <table>
                         	<tr>
                                 <td>주문자</td>
-                                <td><input type="text" name="orderUser" value="${sessUser.name}"></td>
+                                <td><input type="text" name="orderUserName" readonly  value="${sessUser.name}"></td>
                             </tr>
                         
                             <tr>
@@ -89,8 +108,9 @@
                                 </td>
                             </tr>
                         </table>
+                    </form>
                     </div>
-
+					
                     <p>
                         <a href="#" id="btnBuy"><img src="../images/market_btn_buy.gif" alt="구매하기"></a>
                         <a href="#" id="btnShopping"><img src="../images/market_btn_shopping.gif"></a>

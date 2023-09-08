@@ -172,4 +172,11 @@ public class SQL {
 	//조회수 
 	public static final String UPDATE_VIEW_HIT = " UPDATE `Article` SET `hit`=`hit`+1 where `no`=? ";
 	
+	
+	//최신 게시글
+	public static final String SELECT_ARTICLE_LATEST = "SELECT `no`, `title`, `rdate` FROM `Article` "
+													 + "WHERE `parent` = 0 AND `cate` = ? "
+													 + "Order BY `no` DESC LIMIT 0, ? ";
+	
+	
 }

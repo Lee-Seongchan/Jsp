@@ -204,6 +204,7 @@ let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
 			if(!hp.match(reHp)){
 				$("#resultHp").css("color","red").text('유효한 휴대폰 번호가 아닙니다');
 				isHpOk = false;
+				return;
 				
 			}
 			
@@ -223,14 +224,112 @@ let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
 					}	
 				});
 		
-		})//input[name=hp] end 휴대폰 중복 체크 
-	});//end
+		})//input[name=hp] end 휴대폰 중복 체크 	
+	})
+	
+	//이메일 인증
+	$(function(){
+		
+		let preventDoubleClick = false;
+		
+		$("#btnEmailCode").click(function(){
+			
+			//alert("확인");
+			
+			//서버로 전송 ajax
+			const email = $("input[name=email]").val();
+			const type = $("input[name=type]").val();
+			
+			const jsonData = {
+					"type":type,
+					"email" : email
+			}
+			
+			console.log(email);
+			console.log(type);
+			
+			if(preventDoubleClick){
+				return;
+			}
+			
+			preventDoubleClick = true;
+			
+			$("#resultEmail").text("인증코드 전송 중 잠시만 기다려주세요");
+	
+			setTimeout(function(){
+				
+				$.ajax({
+					url: "/Farmstory2/user/authEmail.do",
+					type:"GET",
+					data : jsonData,
+					dataType : "json",
+					success:function(data){
+						console.log("data = " + data);
+					
+						if(data.result > 0){
+							$("#resultEmail").css("color","red").text("이미 사용중인 이메일 입니다.");
+							isEmailOk = false;
+							
+						}else{
+							if(data.status > 0){
+								$(".auth").show();
+								$("#resultEmail").attr("readonly",true).text("인증코드 발송 되었습니다."); //이메일 코드 발송 후 이메일 수정 불가
+							}else{
+								$("#resultEmail").css("color","red").text("인증코드 전송이 실패했습니다. 잠시후 다시 시도하십시오.");
+							}
+						}
+					
+					preventDoubleClick = false;
+					}//success end
+				
+				}) //ajax end
+				
+			},2000); //setTimeout
+
+		});//(#btnEmailCode).click end
+		
+		
+		//인증 확인 버튼
+		$("#btnEmailAuth").click(function(){
+			
+			const code = $("input[name=auth]").val();
+			const jsonData = {
+					"code" : code
+			}
+			
+			$.ajax({
+				url:"/Farmstory2/user/authEmail.do",
+				type:"POST",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+								
+					console.log(data);
+					console.log(data.result);
+					
+					if(data.result > 0){
+						$("#resultEmail").css("color","green").text("이메일 인증이 완료 되었습니다.");
+						isEmailOk = true;
+					}else{
+						$("#resultEmail").css("color","red").text("이메일 인증이 실패 했습니다. 다시 시도하십시오");		
+						isEmailOk = false;
+					}
+				}//success end
+				
+			}); //ajax end 
+		});	//btnEmailAuthend
+		
+	});//function end
+	
+	
+	
 
 </script>
 
         <div id="user">
            	<section class="register">
 				<form id="formUser" action="/Farmstory2/user/register.do" method="post">
+				<input type="hidden" name="type" value="REGISTER"/>
 					<table border="1">
 						<caption>사이트 이용정보 입력</caption>
 						<tr>
@@ -274,7 +373,12 @@ let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
 						<tr>
 							<td>E-Mail</td>
 							<td><input type="email" name="email" placeholder="이메일 입력" />
-								<span id="resultEmail"></span>
+							<button type="button" id="btnEmailCode"><img src="../images/chk_auth.gif" alt="인증번호 받기"/></button>
+							<span id="resultEmail"></span>
+							<div class="auth">
+                                 <input type="text" name="auth" placeholder="인증번호 입력"/>
+                                 <button type="button" id="btnEmailAuth"><img src="../images/chk_confirm.gif" alt="확인"/></button>
+                             </div>
 							</td>
 						</tr>
 						<tr>

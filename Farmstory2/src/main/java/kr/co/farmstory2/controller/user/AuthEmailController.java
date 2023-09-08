@@ -16,25 +16,45 @@ import com.google.gson.JsonObject;
 
 import kr.co.farmstory2.service.UserService;
 
-@WebServlet("/user/checkEmail.do")
-public class CheckEmailController extends HttpServlet{
 
-	private static final long serialVersionUID = 3460739365759228002L;
 
-	Logger logger = LoggerFactory.getLogger(this.getClass());
+
+@WebServlet("/user/authEmail.do")
+public class AuthEmailController extends HttpServlet{
+
+	private static final long serialVersionUID = 3422854268531008300L;
 	UserService service = UserService.INSTANCE;
+	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		String type = req.getParameter("type");
 		String email = req.getParameter("email");
-		logger.debug("email = " + email);
 		
-		int result = service.selectCheckEmail(email);
-		logger.debug("result = " + result);
+		logger.info("email : " + email);
+		logger.info("type : " + type);
+		
+		int status = 0;
+		int result = 0;
+		
+		
+		if(type.equals("REGISTER")) {
+			// 회원가입할 때 이메일 인증
+			result = service.selectCheckEmail(email);
+			
+			logger.debug("result - " + result);
+			
+			if(result == 0) {
+				status = service.sendCodeByEmail(email);
+				logger.debug("status - " + status);				
+			}
+		
+		}
 		
 		JsonObject json = new JsonObject();
 		json.addProperty("result", result);
+		json.addProperty("status", status);
 		
 		PrintWriter writer = resp.getWriter();
 		writer.print(json.toString());
@@ -43,7 +63,17 @@ public class CheckEmailController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String code = req.getParameter("code");
 		
+		int result = service.confirmCodeByEmail(code);
 		
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
+		
+		PrintWriter writer = resp.getWriter();
+		writer.print(json.toString());
 	}
+	
+	
 }

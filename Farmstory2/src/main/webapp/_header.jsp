@@ -24,7 +24,9 @@
    		alert('로그인에 실패 했습니다. 아이디, 비번을 다시 확인하시기 바랍니다.');
    	}else if(success == 101){
    		alert('로그인을 먼저 하셔야 합니다.');    		
-   	}    
+   	}else if(success == 200){
+   		alert("상품 주문이 완료되었습니다.");
+   	}
    	</script>
 
 </head>
@@ -38,7 +40,7 @@
                 <a href="/Farmstory2">HOME |</a>
                 <c:if test="${empty sessUser}">
                 <a href="/Farmstory2/user/login.do">로그인 |</a>
-                <a href="/Farmstroy2/user/register.do">회원가입 |</a>
+                <a href="/Farmstory2/user/register.do">회원가입 |</a>
                 </c:if>
                 <c:if test="${not empty sessUser}">
                 	<a href="/Farmstory2/user/logout.do">로그아웃 |</a>

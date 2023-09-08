@@ -73,6 +73,11 @@ public enum ArticleService {
 		dao.updateViewHit(no);
 	}
 	
+	//최신글 
+	public List<ArticleDTO> selectArticleLateste(String cate, int end) {
+		return dao.selectArticleLateste(cate, end);
+	}
+	
 	
 	public String getPath(HttpServletRequest req, String dir) {
 		// 파일 업로드 경로 구하기 

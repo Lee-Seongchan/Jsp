@@ -2,7 +2,6 @@ package kr.co.farmstory2.controller.market;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +31,7 @@ public class OrderCompleteController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String userName =req.getParameter("orderUserName");
 		String orderProduct = req.getParameter("orderProduct");
 		String orderCount = req.getParameter("orderCount");
 		String orderDelivery = req.getParameter("orderDelivery");

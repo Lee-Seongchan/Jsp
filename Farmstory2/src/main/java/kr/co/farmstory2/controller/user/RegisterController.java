@@ -19,8 +19,10 @@ public class RegisterController extends HttpServlet{
 	private static final long serialVersionUID = -693117371091469119L;
 	UserService service = UserService.INSTANCE;
 	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/user/register.jsp");
 		dispatcher.forward(req, resp);

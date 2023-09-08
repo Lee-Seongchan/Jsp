@@ -1,6 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file ="./_header.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script>
+    $(function(){
+
+        $('.showPopup').click(function(e){
+            e.preventDefault();
+            $('#orderPopup').show();
+        });
+
+        $('#orderPopup .btnClose').click(function(){
+            $('#orderPopup').hide();
+        });
+
+    });
+</script>        
+        
         <main>
              <%@ include file="./_aside.jsp" %>
             <section id="orderList">

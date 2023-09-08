@@ -147,5 +147,15 @@ public class ArticleDTO {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
+
+	@Override
+	public String toString() {
+		return "ArticleDTO [no=" + no + ", parent=" + parent + ", comment=" + comment + ", cate=" + cate + ", title="
+				+ title + ", content=" + content + ", file=" + file + ", hit=" + hit + ", writer=" + writer + ", regip="
+				+ regip + ", rdate=" + rdate + ", nick=" + nick + ", fileDto=" + fileDto + "]";
+	}
+	
+	
+	
 	
 }

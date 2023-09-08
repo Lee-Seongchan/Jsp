@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file ="../_header.jsp" %>
+<%@include file ="./_header.jsp" %>
    <script>
         $(function(){
             $('.slider > ul').bxSlider({
@@ -39,93 +39,39 @@
                     <a href="#"><img src="./images/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
                     <img src="./images/main_latest1_img.jpg" alt="이미지"/>
                     <table border="0">
+                    <c:forEach var="growLate" items="${growLates}">
                         <tr>
                             <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
+                            <td><a href="/Farmstory2/board/view.do?group=Croptalk&cate=grow&no=${grow.no}">${growLate.title}</a></td>
+                            <td>${growLate.rdate}</td>
                         </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
+                    </c:forEach>
                     </table>
                 </div>
                 <div>
                     <a href="#"><img src="./images/main_latest2_tit.png" alt="귀농학교"/></a>
                     <img src="./images/main_latest2_img.jpg" alt="이미지"/>
                     <table border="0">
+                     <c:forEach var="schoolLate" items="${schoolLates}">
                         <tr>
                             <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
+                            <td><a href="/Farmstory2/board/view.do?group=Croptalk&cate=school&no=${schoolLate.no}">${schoolLate.title}</a></td>
+                            <td>${schoolLate.rdate}</td>
                         </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
+                    </c:forEach> 
                     </table>
                 </div>
                 <div>
                     <a href="#"><img src="./images/main_latest3_tit.png" alt="농작물 이야기"/></a>
                     <img src="./images/main_latest3_img.jpg" alt="이미지"/>
                     <table border="0">
+                    <c:forEach var="storyLate" items="${storyLates}">
                         <tr>
                             <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
+                            <td><a href="/Farmstory2/board/view.do?group=Croptalk&cate=story&no=${story.no}">${storyLate.title}</a></td>
+                            <td>${storyLate.rdate}</td>
                         </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
+                     </c:forEach>  
                     </table>
                 </div>
                 
@@ -168,27 +114,27 @@
                         </ul>
                         <div id="tabs-1">
                             <ul class="txt">
-                                <li><a href="#">· 홈페이지 오픈 기념 이벤트를 진행합니다.</a></li>
-                                <li><a href="#">· 홈페이지 오픈 기념 이벤트를 진행합니다.</a></li>
-                                <li><a href="#">· 홈페이지 오픈 기념 이벤트를 진행합니다.</a></li>
+                               <c:forEach var="noticeLate" items="${noticeLates}">
+                                <li><a href="/Farmstory2/board/view.do?group=Community&cate=notice&no=${noticeLate.no}">· ${noticeLate.title}</a></li>
+                                </c:forEach>
                             </ul>
                         </div>
                         <div id="tabs-2">
                             <ul class="txt">
-                                <li><a href="#">· 홈페이지 이용 관련 불편사항을 들려주세요.</a></li>
-                                <li><a href="#">· 홈페이지 이용 관련 불편사항을 들려주세요.</a></li>
-                                <li><a href="#">· 홈페이지 이용 관련 불편사항을 들려주세요.</a></li>
+                                <c:forEach var="quaLate" items="${quaLates}">
+                                <li><a href="/Farmstory2/board/view.do?group=Community&cate=qua&no=${quaLate.no}">· ${quaLate.title}</a></li>
+                                </c:forEach>
                             </ul>
                         </div>
                         <div id="tabs-3">
                             <ul class="txt">
-                                <li><a href="#">· 홈페이지를 오픈하였습니다.</a></li>
-                                <li><a href="#">· 홈페이지를 오픈하였습니다.</a></li>
-                                <li><a href="#">· 홈페이지를 오픈하였습니다.</a></li>
+                                <c:forEach var="faqLate" items="${faqLates}">
+                                <li><a href="/Farmstory2/board/view.do?group=Community&cate=faq&no=${faqLate.no}">· ${faqLate.title}</a></li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-<%@include file ="../_footer.jsp" %>
+<%@include file ="./_footer.jsp" %>

@@ -295,5 +295,35 @@ import kr.co.farmstory2.dto.FileDTO;
 	}
 	
 	
+	//최신글 조회 
+	public List<ArticleDTO> selectArticleLateste(String cate, int end) {
+		
+		List<ArticleDTO> latest = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_ARTICLE_LATEST);
+			psmt.setString(1, cate);
+			psmt.setInt(2, end);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ArticleDTO dto = new ArticleDTO();
+				dto.setNo(rs.getInt(1));
+				dto.setTitle(rs.getString(2));
+				dto.setRdateYYMMDD(rs.getString(3));
+				latest.add(dto);
+			}
+			
+			close();
+			
+			
+		} catch (Exception e) {
+			logger.error("selectArteicleLateste() error : " + e.getMessage());
+		}
+		return latest;
+	}
+	
+	
 	
 }
